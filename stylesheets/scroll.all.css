@@ -1,0 +1,1 @@
+throw Error("Compass::SpriteException: No files were found in the load path matching \"icons/*.png\". Your current load paths are: /Users/alex/projects/my_portfolio/source/images\n  (in /Users/alex/projects/my_portfolio/source/stylesheets/scroll.all.css.sass)")

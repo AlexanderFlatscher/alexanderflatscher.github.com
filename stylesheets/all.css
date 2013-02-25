@@ -1,0 +1,1052 @@
+@import url(http://fonts.googleapis.com/css?family=Lobster+Two:400,400italic,700,700italic|Open+Sans+Condensed:300,300italic,700|Open+Sans:300italic,400,300|Quicksand:300,400,700);
+@font-face {
+  font-family: "icomoon";
+  src: url("/fonts/icomoon.eot");
+  src: url("/fonts/icomoon.eot?#iefix") format("embedded-opentype"), url("/fonts/icomoon.woff") format("woff"), url("/fonts/icomoon.ttf") format("truetype"), url("/fonts/icomoon.svg#icomoon") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+
+/* line 62, all.css.sass */
+.icon {
+  font-family: icomoon, Quicksand, sans-serif; }
+
+/* line 66, all.css.sass */
+body {
+  font-size: 16px;
+  font-family: Quicksand, sans-serif;
+  font-weight: 300;
+  line-height: 1;
+  letter-spacing: -0.095em; }
+  /* line 43, all.css.sass */
+  .rgba body {
+    color: rgba(23, 23, 23, 0.8); }
+  /* line 45, all.css.sass */
+  .no-rgba body, no-js body {
+    color: #171717; }
+  /* line 75, all.css.sass */
+  .no-canvas body, .no-js body {
+    background: url(/images/no_canvas_bg_599.png) center top repeat-y; }
+
+/* line 79, all.css.sass */
+h1 {
+  font-size: 70px;
+  font-weight: 300;
+  letter-spacing: -0.102em;
+  text-transform: uppercase;
+  margin: 100px 0 20px 0; }
+  /* line 43, all.css.sass */
+  .rgba h1 {
+    color: rgba(23, 23, 23, 0.8); }
+  /* line 45, all.css.sass */
+  .no-rgba h1, no-js h1 {
+    color: #171717; }
+  /* line 39, all.css.sass */
+  .textshadow h1 {
+    text-shadow: -1px -1px 0px white; }
+
+/* line 84, all.css.sass */
+nav {
+  z-index: 5;
+  background: url(/images/light_linen_pattern.jpg);
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: -200px;
+  width: 200px; }
+  /* line 28, all.css.sass */
+  .boxshadow nav {
+    -webkit-box-shadow: inset 1.5em 0 1.5em -0.75em rgba(0, 0, 0, 0.2), inset 0.5em 0 0.5em -0.5em rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: inset 1.5em 0 1.5em -0.75em rgba(0, 0, 0, 0.2), inset 0.5em 0 0.5em -0.5em rgba(0, 0, 0, 0.2);
+    box-shadow: inset 1.5em 0 1.5em -0.75em rgba(0, 0, 0, 0.2), inset 0.5em 0 0.5em -0.5em rgba(0, 0, 0, 0.2); }
+  /* line 95, all.css.sass */
+  .csstransitions.csstransforms nav {
+    -webkit-transition-property: -webkit-transform;
+    -moz-transition-property: -moz-transform;
+    -o-transition-property: -o-transform;
+    transition-property: transform;
+    -webkit-transition-duration: 200ms;
+    -moz-transition-duration: 200ms;
+    -o-transition-duration: 200ms;
+    transition-duration: 200ms; }
+  /* line 99, all.css.sass */
+  .nav_open.csstransforms nav {
+    -webkit-transform: translateX(-200px);
+    -moz-transform: translateX(-200px);
+    -ms-transform: translateX(-200px);
+    -o-transform: translateX(-200px);
+    transform: translateX(-200px); }
+  /* line 101, all.css.sass */
+  .nav_open.no-csstransforms nav, no-js nav {
+    right: 0; }
+  /* line 104, all.css.sass */
+  nav .menu_icon {
+    font-size: 40px;
+    text-decoration: none;
+    position: absolute;
+    z-index: 1;
+    display: inline-block;
+    width: 60px;
+    height: 60px;
+    top: 5px;
+    left: -65px;
+    overflow: hidden;
+    white-space: nowrap;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0); }
+    /* line 43, all.css.sass */
+    .rgba nav .menu_icon {
+      color: rgba(23, 23, 23, 0.8); }
+    /* line 45, all.css.sass */
+    .no-rgba nav .menu_icon, no-js nav .menu_icon {
+      color: #171717; }
+    /* line 56, all.css.sass */
+    .rgba nav .menu_icon {
+      background: rgba(255, 255, 255, 0.4); }
+    /* line 58, all.css.sass */
+    .no-rgba nav .menu_icon, .no-js nav .menu_icon {
+      background: white; }
+    /* line 122, all.css.sass */
+    .borderradius nav .menu_icon {
+      border-radius: 50%; }
+    /* line 126, all.css.sass */
+    nav .menu_icon .icon, nav .menu_icon .close {
+      display: inline-block; }
+    /* line 129, all.css.sass */
+    nav .menu_icon .icon {
+      padding: 6px 100px 0 10px; }
+      /* line 132, all.css.sass */
+      .nav_open nav .menu_icon .icon {
+        margin-left: -132px; }
+    /* line 135, all.css.sass */
+    nav .menu_icon .close {
+      padding-top: 5px; }
+  /* line 140, all.css.sass */
+  nav ul {
+    margin: 0;
+    padding: 60px 0 0; }
+    /* line 144, all.css.sass */
+    nav ul li {
+      margin-bottom: 20px; }
+      /* line 147, all.css.sass */
+      nav ul li a {
+        font-size: 25px;
+        font-weight: 300;
+        text-decoration: none;
+        text-transform: uppercase;
+        letter-spacing: -2px;
+        display: inline-block;
+        padding: 10px;
+        padding-left: 20px; }
+        /* line 28, all.css.sass */
+        .boxshadow nav ul li a {
+          -webkit-box-shadow: inset 1.5em 0 1.5em -0.75em rgba(0, 0, 0, 0.2), inset 0.5em 0 0.5em -0.5em rgba(0, 0, 0, 0.2);
+          -moz-box-shadow: inset 1.5em 0 1.5em -0.75em rgba(0, 0, 0, 0.2), inset 0.5em 0 0.5em -0.5em rgba(0, 0, 0, 0.2);
+          box-shadow: inset 1.5em 0 1.5em -0.75em rgba(0, 0, 0, 0.2), inset 0.5em 0 0.5em -0.5em rgba(0, 0, 0, 0.2); }
+        /* line 160, all.css.sass */
+        .rgba nav ul li a {
+          color: rgba(255, 255, 255, 0.85); }
+        /* line 163, all.css.sass */
+        .no-rgba nav ul li a, .no-js nav ul li a {
+          color: white; }
+        /* line 166, all.css.sass */
+        .textshadow nav ul li a {
+          text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.8); }
+        /* line 169, all.css.sass */
+        .csstransitions nav ul li a {
+          -webkit-transition: 100ms padding-left;
+          -moz-transition: 100ms padding-left;
+          -o-transition: 100ms padding-left;
+          transition: 100ms padding-left; }
+        /* line 172, all.css.sass */
+        nav ul li a:hover, nav ul li a:focus {
+          padding-left: 30px; }
+        /* line 175, all.css.sass */
+        nav ul li a.welcome {
+          background: #0a415c; }
+        /* line 178, all.css.sass */
+        nav ul li a.about {
+          background: #0f4d0f; }
+        /* line 181, all.css.sass */
+        nav ul li a.work {
+          background: #80721a; }
+        /* line 184, all.css.sass */
+        nav ul li a.contact {
+          background: #7f193d; }
+
+/* line 188, all.css.sass */
+.bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  z-index: 0; }
+  /* line 196, all.css.sass */
+  .csstransitions.csstransforms .bg {
+    -webkit-transition-property: -webkit-transform;
+    -moz-transition-property: -moz-transform;
+    -o-transition-property: -o-transform;
+    transition-property: transform;
+    -webkit-transition-duration: 200ms;
+    -moz-transition-duration: 200ms;
+    -o-transition-duration: 200ms;
+    transition-duration: 200ms; }
+  /* line 200, all.css.sass */
+  .nav_open.csstransforms .bg {
+    -webkit-transform: translateX(-200px);
+    -moz-transform: translateX(-200px);
+    -ms-transform: translateX(-200px);
+    -o-transform: translateX(-200px);
+    transform: translateX(-200px); }
+  /* line 202, all.css.sass */
+  .nav_open.no-csstransforms .bg, no-js .bg {
+    left: -200px; }
+
+/* line 205, all.css.sass */
+#wrapper {
+  z-index: 1;
+  position: relative; }
+  /* line 209, all.css.sass */
+  .csstransitions.csstransforms #wrapper {
+    -webkit-transition-property: -webkit-transform;
+    -moz-transition-property: -moz-transform;
+    -o-transition-property: -o-transform;
+    transition-property: transform;
+    -webkit-transition-duration: 200ms;
+    -moz-transition-duration: 200ms;
+    -o-transition-duration: 200ms;
+    transition-duration: 200ms; }
+  /* line 213, all.css.sass */
+  .nav_open.csstransforms #wrapper {
+    -webkit-transform: translateX(-200px);
+    -moz-transform: translateX(-200px);
+    -ms-transform: translateX(-200px);
+    -o-transform: translateX(-200px);
+    transform: translateX(-200px); }
+  /* line 215, all.css.sass */
+  .nav_open.no-csstransforms #wrapper, no-js #wrapper {
+    left: -200px; }
+  /* line 218, all.css.sass */
+  #wrapper .slide {
+    padding-left: 10px;
+    padding-right: 10px; }
+
+/* line 222, all.css.sass */
+#welcome {
+  overflow: hidden; }
+  /* line 225, all.css.sass */
+  #welcome .salutation {
+    text-align: center; }
+    /* line 228, all.css.sass */
+    #welcome .salutation .me {
+      margin-top: 10px;
+      margin-bottom: -50px; }
+    /* line 232, all.css.sass */
+    #welcome .salutation p {
+      margin: 0 0 20px; }
+      /* line 235, all.css.sass */
+      #welcome .salutation p.hey {
+        font-family: "Lobster Two", "Times New Roman", Times, serif;
+        font-size: 80px;
+        letter-spacing: normal;
+        position: relative; }
+        /* line 242, all.css.sass */
+        #welcome .salutation p.hey:after {
+          content: "";
+          position: absolute;
+          bottom: -8px;
+          left: 10px;
+          right: 10px;
+          border-bottom: 2px dashed #171717; }
+      /* line 250, all.css.sass */
+      #welcome .salutation p.my {
+        font-size: 40px;
+        font-weight: 300;
+        letter-spacing: -0.102em;
+        text-transform: uppercase;
+        position: relative; }
+        /* line 43, all.css.sass */
+        .rgba #welcome .salutation p.my {
+          color: rgba(23, 23, 23, 0.8); }
+        /* line 45, all.css.sass */
+        .no-rgba #welcome .salutation p.my, no-js #welcome .salutation p.my {
+          color: #171717; }
+        /* line 39, all.css.sass */
+        .textshadow #welcome .salutation p.my {
+          text-shadow: -1px -1px 0px white; }
+        /* line 254, all.css.sass */
+        #welcome .salutation p.my .and_break {
+          display: none; }
+        /* line 257, all.css.sass */
+        #welcome .salutation p.my:after {
+          content: "";
+          position: absolute;
+          bottom: -12px;
+          left: 10px;
+          right: 10px;
+          border-bottom: 2px dashed #171717; }
+      /* line 265, all.css.sass */
+      #welcome .salutation p.wanna, #welcome .salutation p.or {
+        letter-spacing: -0.09em;
+        display: inline; }
+      /* line 269, all.css.sass */
+      #welcome .salutation p.wanna {
+        font-size: 30px;
+        margin-bottom: 0px; }
+      /* line 273, all.css.sass */
+      #welcome .salutation p.or {
+        font-size: 20px; }
+
+/* line 277, all.css.sass */
+#about h1 {
+  float: right;
+  margin-right: 10px; }
+/* line 281, all.css.sass */
+#about p {
+  clear: right;
+  overflow: hidden;
+  *zoom: 1;
+  padding-bottom: 1px; }
+  /* line 49, all.css.sass */
+  .js #about p {
+    text-align: justify; }
+  /* line 52, all.css.sass */
+  .no-js #about p {
+    text-align: left; }
+  /* line 287, all.css.sass */
+  #about p:first-letter {
+    font-size: 50px;
+    font-weight: 300;
+    letter-spacing: -0.102em;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    line-height: 0.7em;
+    float: left;
+    padding: 10px 0 0 0; }
+    /* line 43, all.css.sass */
+    .rgba #about p:first-letter {
+      color: rgba(23, 23, 23, 0.8); }
+    /* line 45, all.css.sass */
+    .no-rgba #about p:first-letter, no-js #about p:first-letter {
+      color: #171717; }
+    /* line 39, all.css.sass */
+    .textshadow #about p:first-letter {
+      text-shadow: -1px -1px 0px white; }
+
+/* line 296, all.css.sass */
+#work .item {
+  margin: 40px 0;
+  position: relative; }
+  /* line 300, all.css.sass */
+  #work .item:before {
+    content: "";
+    position: absolute;
+    border-bottom: 2px dashed #171717;
+    width: 100%;
+    top: 290px; }
+  /* line 307, all.css.sass */
+  #work .item .image {
+    text-align: center;
+    width: 300px;
+    height: 300px;
+    position: relative;
+    margin: 0 auto; }
+    /* line 314, all.css.sass */
+    .borderradius #work .item .image {
+      border-radius: 50%;
+      overflow: hidden;
+      -webkit-mask-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAA5JREFUeNpiYGBgAAgwAAAEAAGbA+oJAAAAAElFTkSuQmCC); }
+    /* line 319, all.css.sass */
+    #work .item .image:after {
+      content: "";
+      position: absolute;
+      top: 170px;
+      bottom: 0;
+      left: 0;
+      right: 0; }
+      /* line 327, all.css.sass */
+      .rgba #work .item .image:after {
+        background: rgba(255, 255, 255, 0.8); }
+      /* line 329, all.css.sass */
+      .no-rgba #work .item .image:after, .no-js #work .item .image:after {
+        background: white; }
+  /* line 332, all.css.sass */
+  #work .item .info {
+    margin-top: -125px;
+    position: relative;
+    overflow: hidden;
+    *zoom: 1; }
+    /* line 337, all.css.sass */
+    #work .item .info h2 {
+      font-size: 40px;
+      font-family: "Lobster Two";
+      text-align: center;
+      margin: 0 0 10px; }
+    /* line 344, all.css.sass */
+    #work .item .info .categories {
+      text-align: center;
+      width: 190px;
+      margin: 0 auto;
+      font-weight: 400; }
+    /* line 350, all.css.sass */
+    #work .item .info .description {
+      margin-top: 30px; }
+      /* line 49, all.css.sass */
+      .js #work .item .info .description {
+        text-align: justify; }
+      /* line 52, all.css.sass */
+      .no-js #work .item .info .description {
+        text-align: left; }
+    /* line 354, all.css.sass */
+    #work .item .info .code, #work .item .info .link {
+      float: right;
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      overflow: hidden; }
+      /* line 361, all.css.sass */
+      .rgba #work .item .info .code, .rgba #work .item .info .link {
+        background: rgba(229, 199, 0, 0.3); }
+      /* line 364, all.css.sass */
+      .no-rgba #work .item .info .code, .no-js #work .item .info .code, .no-rgba #work .item .info .link, .no-js #work .item .info .link {
+        background: #f3d199; }
+      /* line 367, all.css.sass */
+      .csstransitions #work .item .info .code, .csstransitions #work .item .info .link {
+        -webkit-transition: 150ms background;
+        -moz-transition: 150ms background;
+        -o-transition: 150ms background;
+        transition: 150ms background; }
+      /* line 369, all.css.sass */
+      #work .item .info .code a, #work .item .info .link a {
+        width: 200px;
+        height: 100%;
+        display: inline-block;
+        position: relative;
+        left: 0;
+        text-decoration: none;
+        font-size: 20px;
+        font-weight: 300;
+        letter-spacing: -0.102em;
+        text-transform: uppercase; }
+        /* line 43, all.css.sass */
+        .rgba #work .item .info .code a, .rgba #work .item .info .link a {
+          color: rgba(23, 23, 23, 0.8); }
+        /* line 45, all.css.sass */
+        .no-rgba #work .item .info .code a, no-js #work .item .info .code a, .no-rgba #work .item .info .link a, no-js #work .item .info .link a {
+          color: #171717; }
+        /* line 39, all.css.sass */
+        .textshadow #work .item .info .code a, .textshadow #work .item .info .link a {
+          text-shadow: -1px -1px 0px white; }
+        /* line 43, all.css.sass */
+        .rgba #work .item .info .code a, .rgba #work .item .info .link a {
+          color: rgba(23, 23, 23, 0.8); }
+        /* line 45, all.css.sass */
+        .no-rgba #work .item .info .code a, no-js #work .item .info .code a, .no-rgba #work .item .info .link a, no-js #work .item .info .link a {
+          color: #171717; }
+        /* line 379, all.css.sass */
+        .csstransitions #work .item .info .code a, .csstransitions #work .item .info .link a {
+          -webkit-transition: 150ms left cubic-bezier(0.25, 0.46, 0.45, 0.94);
+          -moz-transition: 150ms left cubic-bezier(0.25, 0.46, 0.45, 0.94);
+          -o-transition: 150ms left cubic-bezier(0.25, 0.46, 0.45, 0.94);
+          transition: 150ms left cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+        /* line 382, all.css.sass */
+        #work .item .info .code a .text, #work .item .info .link a .text {
+          position: absolute;
+          left: 15px;
+          top: 30px; }
+        /* line 387, all.css.sass */
+        #work .item .info .code a .arrow, #work .item .info .link a .arrow {
+          position: absolute;
+          top: 16px;
+          left: 150px;
+          font-size: 50px; }
+      /* line 396, all.css.sass */
+      .rgba #work .item .info .code:hover, .rgba #work .item .info .code:focus, .rgba #work .item .info .link:hover, .rgba #work .item .info .link:focus {
+        background: rgba(229, 199, 0, 0.7); }
+      /* line 399, all.css.sass */
+      .no-rgba #work .item .info .code:hover, .no-js #work .item .info .code:hover, .no-rgba #work .item .info .code:focus, .no-js #work .item .info .code:focus, .no-rgba #work .item .info .link:hover, .no-js #work .item .info .link:hover, .no-rgba #work .item .info .link:focus, .no-js #work .item .info .link:focus {
+        background: #ffc423; }
+      /* line 402, all.css.sass */
+      #work .item .info .code:hover a, #work .item .info .code:focus a, #work .item .info .link:hover a, #work .item .info .link:focus a {
+        left: -120px; }
+    /* line 406, all.css.sass */
+    #work .item .info .link.not_alone {
+      margin-left: -15px; }
+    /* line 410, all.css.sass */
+    #work .item .info .link a .text {
+      left: 20px; }
+
+/* line 415, all.css.sass */
+#contact p {
+  font-size: 25px;
+  margin: 30px 0; }
+  /* line 419, all.css.sass */
+  #contact p br {
+    display: none; }
+  /* line 422, all.css.sass */
+  #contact p.so {
+    position: relative; }
+    /* line 425, all.css.sass */
+    #contact p.so:after {
+      content: "";
+      position: absolute;
+      border-bottom: 2px dashed #171717;
+      width: 100%;
+      bottom: -17px;
+      left: 0px; }
+  /* line 433, all.css.sass */
+  #contact p.just {
+    text-align: right; }
+    /* line 436, all.css.sass */
+    #contact p.just a {
+      font-family: "Lobster Two", "Times New Roman", Times, serif;
+      text-decoration: none; }
+      /* line 441, all.css.sass */
+      .rgba #contact p.just a {
+        color: rgba(23, 23, 23, 0.8); }
+      /* line 444, all.css.sass */
+      .no-rgba #contact p.just a, .no-js #contact p.just a {
+        color: #171717; }
+
+/* line 447, all.css.sass */
+footer {
+  text-align: center;
+  position: relative;
+  font-size: 16px;
+  margin-bottom: 5px; }
+
+@media (min-width: 480px) {
+  /* line 458, all.css.sass */
+  #welcome .salutation p.my .and_break {
+    display: inherit; } }
+@media (min-width: 600px) {
+  /* line 464, all.css.sass */
+  body {
+    font-size: 20px; }
+    /* line 467, all.css.sass */
+    .no-canvas body, .no-js body {
+      background: url(/images/no_canvas_bg_991.png) center top repeat-y; }
+
+  /* line 470, all.css.sass */
+  h1 {
+    margin-top: 20px; }
+
+  /* line 474, all.css.sass */
+  #wrapper .slide {
+    padding-top: 50px;
+    padding-bottom: 50px; }
+  /* line 478, all.css.sass */
+  .csstransitions.csstransforms #wrapper {
+    -webkit-transition-property: none;
+    -moz-transition-property: none;
+    -o-transition-property: none;
+    transition-property: none;
+    -webkit-transition-duration: 200ms;
+    -moz-transition-duration: 200ms;
+    -o-transition-duration: 200ms;
+    transition-duration: 200ms; }
+  /* line 482, all.css.sass */
+  .nav_open.csstransforms #wrapper {
+    -webkit-transform: none;
+    -moz-transform: none;
+    -ms-transform: none;
+    -o-transform: none;
+    transform: none; }
+  /* line 484, all.css.sass */
+  .nav_open.no-csstransforms #wrapper, no-js #wrapper {
+    left: inherit; }
+
+  /* line 488, all.css.sass */
+  .csstransitions.csstransforms .bg {
+    -webkit-transition-property: none;
+    -moz-transition-property: none;
+    -o-transition-property: none;
+    transition-property: none;
+    -webkit-transition-duration: 200ms;
+    -moz-transition-duration: 200ms;
+    -o-transition-duration: 200ms;
+    transition-duration: 200ms; }
+  /* line 492, all.css.sass */
+  .nav_open.csstransforms .bg {
+    -webkit-transform: none;
+    -moz-transform: none;
+    -ms-transform: none;
+    -o-transform: none;
+    transform: none; }
+  /* line 494, all.css.sass */
+  .nav_open.no-csstransforms .bg, no-js .bg {
+    left: inherit; }
+
+  /* line 497, all.css.sass */
+  nav {
+    width: 80px;
+    height: 80px;
+    top: 10px;
+    right: 10px;
+    margin: 0;
+    text-align: right;
+    overflow: hidden; }
+    /* line 56, all.css.sass */
+    .rgba nav {
+      background: rgba(255, 255, 255, 0.4); }
+    /* line 58, all.css.sass */
+    .no-rgba nav, .no-js nav {
+      background: white; }
+    /* line 507, all.css.sass */
+    .boxshadow nav {
+      -webkit-box-shadow: none;
+      -moz-box-shadow: none;
+      box-shadow: none; }
+    /* line 510, all.css.sass */
+    .borderradius nav {
+      border-radius: 50%; }
+    /* line 513, all.css.sass */
+    .csstransitions.csstransforms nav {
+      -webkit-transition-property: none;
+      -moz-transition-property: none;
+      -o-transition-property: none;
+      transition-property: none;
+      -webkit-transition-duration: 0;
+      -moz-transition-duration: 0;
+      -o-transition-duration: 0;
+      transition-duration: 0; }
+    /* line 517, all.css.sass */
+    .nav_open.csstransforms nav {
+      -webkit-transform: none;
+      -moz-transform: none;
+      -ms-transform: none;
+      -o-transform: none;
+      transform: none; }
+    /* line 519, all.css.sass */
+    .nav_open.no-csstransforms nav, no-js nav {
+      right: inherit; }
+    /* line 522, all.css.sass */
+    .csstransitions.csstransforms nav, .csstransitions.no-csstransforms nav {
+      -webkit-transition: 300ms width, 300ms height, 300ms top, 300ms right, 300ms background;
+      -moz-transition: 300ms width, 300ms height, 300ms top, 300ms right, 300ms background;
+      -o-transition: 300ms width, 300ms height, 300ms top, 300ms right, 300ms background;
+      transition: 300ms width, 300ms height, 300ms top, 300ms right, 300ms background; }
+    /* line 525, all.css.sass */
+    nav .menu_icon {
+      width: 80px;
+      height: 80px;
+      font-size: 40px;
+      text-decoration: none;
+      position: absolute;
+      display: inline-block;
+      padding: 0;
+      top: 0;
+      right: 0;
+      left: auto; }
+      /* line 43, all.css.sass */
+      .rgba nav .menu_icon {
+        color: rgba(23, 23, 23, 0.8); }
+      /* line 45, all.css.sass */
+      .no-rgba nav .menu_icon, no-js nav .menu_icon {
+        color: #171717; }
+      /* line 538, all.css.sass */
+      .rgba nav .menu_icon, .no-rgba nav .menu_icon, .no-js nav .menu_icon {
+        background: none; }
+      /* line 541, all.css.sass */
+      .csstransitions nav .menu_icon {
+        -webkit-transition: 300ms top, 300ms right;
+        -moz-transition: 300ms top, 300ms right;
+        -o-transition: 300ms top, 300ms right;
+        transition: 300ms top, 300ms right; }
+      /* line 544, all.css.sass */
+      nav .menu_icon .icon {
+        padding-top: 15px;
+        padding-left: 19px; }
+      /* line 548, all.css.sass */
+      nav .menu_icon .close {
+        padding-right: 25px; }
+    /* line 552, all.css.sass */
+    nav ul {
+      overflow: hidden;
+      *zoom: 1;
+      position: absolute;
+      top: -20px;
+      right: 80px;
+      height: 500px;
+      border-right: 2px dashed #171717;
+      padding: 40px 17px 0 0;
+      margin: 0; }
+      /* line 562, all.css.sass */
+      .csstransitions nav ul {
+        -webkit-transition: 300ms top, 300ms right;
+        -moz-transition: 300ms top, 300ms right;
+        -o-transition: 300ms top, 300ms right;
+        transition: 300ms top, 300ms right; }
+      /* line 565, all.css.sass */
+      nav ul li {
+        margin-bottom: 15px; }
+        /* line 568, all.css.sass */
+        nav ul li a {
+          white-space: nowrap;
+          display: inline-block;
+          padding: 3px; }
+          /* line 43, all.css.sass */
+          .rgba nav ul li a {
+            color: rgba(23, 23, 23, 0.8); }
+          /* line 45, all.css.sass */
+          .no-rgba nav ul li a, no-js nav ul li a {
+            color: #171717; }
+          /* line 574, all.css.sass */
+          nav ul li a.welcome, nav ul li a.about, nav ul li a.work, nav ul li a.contact {
+            background: none; }
+          /* line 577, all.css.sass */
+          .boxshadow nav ul li a {
+            -webkit-box-shadow: none;
+            -moz-box-shadow: none;
+            box-shadow: none; }
+          /* line 580, all.css.sass */
+          nav ul li a:hover, nav ul li a:focus {
+            padding-left: 3px; }
+          /* line 583, all.css.sass */
+          .textshadow nav ul li a {
+            text-shadow: -1px -1px 1px rgba(255, 255, 255, 0.8); }
+    /* line 586, all.css.sass */
+    .nav_open nav, .no-js nav {
+      width: 500px;
+      height: 500px;
+      top: -190px;
+      right: -190px; }
+      /* line 592, all.css.sass */
+      .nav_open nav .menu_icon, .no-js nav .menu_icon {
+        top: 200px;
+        right: 200px; }
+      /* line 596, all.css.sass */
+      .nav_open nav ul, .no-js nav ul {
+        top: 180px;
+        right: 280px; }
+    /* line 600, all.css.sass */
+    .nav_open.rgba nav {
+      background: rgba(255, 255, 255, 0.8); }
+
+  /* line 605, all.css.sass */
+  #welcome .salutation {
+    text-align: left;
+    padding-top: 100px;
+    position: relative; }
+    /* line 610, all.css.sass */
+    #welcome .salutation:after {
+      content: "";
+      position: absolute;
+      top: 205px;
+      left: 0;
+      width: 100%;
+      z-index: 0;
+      border-bottom: 2px dashed #171717; }
+    /* line 619, all.css.sass */
+    #welcome .salutation p {
+      font-weight: 300;
+      position: relative;
+      z-index: 2; }
+      /* line 624, all.css.sass */
+      #welcome .salutation p.hey {
+        font-size: 100px; }
+        /* line 627, all.css.sass */
+        #welcome .salutation p.hey:after {
+          display: none; }
+      /* line 630, all.css.sass */
+      #welcome .salutation p.my {
+        font-size: 50px;
+        margin-bottom: 10px; }
+        /* line 634, all.css.sass */
+        #welcome .salutation p.my:after {
+          display: none; }
+      /* line 637, all.css.sass */
+      #welcome .salutation p.wanna, #welcome .salutation p.or {
+        display: block; }
+    /* line 640, all.css.sass */
+    #welcome .salutation .me {
+      position: absolute;
+      z-index: 1;
+      top: 10px;
+      right: 10px; }
+      /* line 646, all.css.sass */
+      .borderradius #welcome .salutation .me {
+        width: 300px;
+        height: 300px;
+        border-radius: 50%;
+        background: url(/images/me.jpg) no-repeat center center; }
+        /* line 652, all.css.sass */
+        .borderradius #welcome .salutation .me img {
+          display: none; }
+    /* line 656, all.css.sass */
+    .csstransitions.borderradius #welcome .salutation .me {
+      -webkit-transition: top 300ms, right 300ms, width 300ms, height 300ms;
+      -moz-transition: top 300ms, right 300ms, width 300ms, height 300ms;
+      -o-transition: top 300ms, right 300ms, width 300ms, height 300ms;
+      transition: top 300ms, right 300ms, width 300ms, height 300ms; }
+    /* line 659, all.css.sass */
+    .csstransitions.borderradius #welcome .salutation:hover .me {
+      top: -90px;
+      right: -90px;
+      width: 500px;
+      height: 500px; }
+
+  /* line 666, all.css.sass */
+  #about p:first-letter {
+    font-size: 65px; }
+
+  /* line 670, all.css.sass */
+  #work .item {
+    min-height: 300px; }
+    /* line 673, all.css.sass */
+    #work .item:before {
+      display: none; }
+    /* line 676, all.css.sass */
+    #work .item .image {
+      margin: 0;
+      position: absolute;
+      z-index: 2;
+      top: 0;
+      left: 0; }
+      /* line 683, all.css.sass */
+      #work .item .image:after {
+        display: none; }
+    /* line 686, all.css.sass */
+    #work .item .info {
+      margin-top: 0; }
+      /* line 689, all.css.sass */
+      #work .item .info h2, #work .item .info p {
+        padding-left: 310px; }
+      /* line 692, all.css.sass */
+      #work .item .info h2 {
+        text-align: left;
+        font-size: 50px; }
+      /* line 696, all.css.sass */
+      #work .item .info .categories {
+        width: auto;
+        margin: 0;
+        text-align: left;
+        font-weight: 300;
+        font-size: 16px;
+        position: relative; }
+        /* line 705, all.css.sass */
+        #work .item .info .categories:after {
+          content: "";
+          position: absolute;
+          z-index: 1;
+          bottom: -17px;
+          left: 0;
+          width: 100%;
+          border-bottom: 2px dashed #171717; }
+      /* line 714, all.css.sass */
+      #work .item .info .description {
+        margin-bottom: 10px; }
+
+  /* line 718, all.css.sass */
+  #contact p {
+    font-size: 30px; } }
+@media (min-width: 768px) {
+  /* line 722, all.css.sass */
+  body {
+    font-size: 24px; }
+
+  /* line 726, all.css.sass */
+  #wrapper .slide {
+    padding-left: 20px;
+    padding-right: 20px; }
+
+  /* line 733, all.css.sass */
+  #welcome .salutation:after {
+    top: 224px; }
+  /* line 736, all.css.sass */
+  #welcome .salutation .me {
+    right: 50px; }
+  /* line 740, all.css.sass */
+  #welcome .salutation p.hey {
+    font-size: 120px; }
+  /* line 743, all.css.sass */
+  #welcome .salutation p.my {
+    font-size: 70px; }
+  /* line 746, all.css.sass */
+  #welcome .salutation p.wanna {
+    font-size: 35px; }
+  /* line 749, all.css.sass */
+  #welcome .salutation p.or {
+    font-size: 24px; }
+  /* line 753, all.css.sass */
+  .csstransitions.borderradius #welcome .salutation:hover .me {
+    right: -50px; }
+
+  /* line 759, all.css.sass */
+  #work .item .info h2 {
+    margin-top: 20px; }
+
+  /* line 763, all.css.sass */
+  #contact p {
+    font-size: 35px; }
+    /* line 766, all.css.sass */
+    #contact p.so {
+      padding-right: 8%; }
+    /* line 769, all.css.sass */
+    #contact p.just {
+      padding-left: 8%; } }
+@media (min-width: 992px) {
+  /* line 773, all.css.sass */
+  body {
+    font-size: 30px; }
+    /* line 776, all.css.sass */
+    .no-canvas body, .no-js body {
+      background: url(/images/no_canvas_bg_1600.png) center top repeat-y; }
+
+  /* line 780, all.css.sass */
+  h1 {
+    font-size: 100px;
+    margin: 150px 0 50px 0; }
+
+  /* line 785, all.css.sass */
+  #wrapper .slide {
+    padding-left: 30px;
+    padding-right: 30px; }
+
+  /* line 792, all.css.sass */
+  #welcome .salutation:before, #welcome .salutation:after {
+    top: 240px; }
+  /* line 795, all.css.sass */
+  #welcome .salutation:before {
+    content: "";
+    position: absolute;
+    border-bottom: 2px dashed #171717;
+    z-index: 0;
+    width: 150px;
+    left: 10px; }
+  /* line 803, all.css.sass */
+  #welcome .salutation:after {
+    width: 693px;
+    left: 211px; }
+  /* line 808, all.css.sass */
+  #welcome .salutation p.hey {
+    font-size: 140px; }
+  /* line 811, all.css.sass */
+  #welcome .salutation p.my {
+    font-size: 90px; }
+  /* line 814, all.css.sass */
+  #welcome .salutation p.wanna {
+    font-size: 48px; }
+  /* line 817, all.css.sass */
+  #welcome .salutation p.or {
+    font-size: 28px;
+    margin-left: 222px; }
+  /* line 821, all.css.sass */
+  #welcome .salutation .me {
+    right: auto;
+    left: 665px; }
+  /* line 826, all.css.sass */
+  .csstransitions.borderradius #welcome .salutation .me {
+    -webkit-transition: top 300ms, left 300ms, width 300ms, height 300ms;
+    -moz-transition: top 300ms, left 300ms, width 300ms, height 300ms;
+    -o-transition: top 300ms, left 300ms, width 300ms, height 300ms;
+    transition: top 300ms, left 300ms, width 300ms, height 300ms; }
+  /* line 829, all.css.sass */
+  .csstransitions.borderradius #welcome .salutation:hover .me {
+    right: auto;
+    left: 565px; }
+
+  /* line 833, all.css.sass */
+  #about {
+    overflow: hidden;
+    *zoom: 1; }
+    /* line 836, all.css.sass */
+    #about p {
+      max-width: 1024px;
+      float: right;
+      margin-top: 0;
+      overflow: visible; }
+
+  /* line 842, all.css.sass */
+  #work .item .info .categories {
+    font-size: 18px; }
+
+  /* line 845, all.css.sass */
+  #contact {
+    overflow: hidden;
+    *zoom: 1; }
+    /* line 848, all.css.sass */
+    #contact p {
+      font-size: 42px;
+      margin: 50px 0; }
+      /* line 852, all.css.sass */
+      #contact p br {
+        display: inherit; }
+      /* line 855, all.css.sass */
+      #contact p.so {
+        padding-right: 0; }
+        /* line 858, all.css.sass */
+        #contact p.so:after {
+          bottom: -30px; }
+      /* line 861, all.css.sass */
+      #contact p.just {
+        padding-left: 0; }
+
+  /* line 864, all.css.sass */
+  footer {
+    font-size: 18px;
+    margin-bottom: 7px; } }
+@media (min-width: 1382px) {
+  /* line 872, all.css.sass */
+  #wrapper {
+    width: 1382px;
+    margin: 0 auto; }
+    /* line 876, all.css.sass */
+    #wrapper .slide {
+      padding-left: 40px;
+      padding-left: 40px; }
+
+  /* line 883, all.css.sass */
+  #welcome .salutation p {
+    margin: 0; }
+    /* line 886, all.css.sass */
+    #welcome .salutation p.hey {
+      margin-bottom: 20px; }
+    /* line 889, all.css.sass */
+    #welcome .salutation p.my {
+      font-size: 100px; }
+    /* line 892, all.css.sass */
+    #welcome .salutation p.wanna, #welcome .salutation p.or {
+      letter-spacing: -0.09em; }
+    /* line 895, all.css.sass */
+    #welcome .salutation p.wanna {
+      font-size: 50px; }
+    /* line 898, all.css.sass */
+    #welcome .salutation p.or {
+      margin-left: 210px;
+      font-size: 30px;
+      letter-spacing: -0.09em; }
+  /* line 903, all.css.sass */
+  #welcome .salutation .me {
+    left: 810px; }
+  /* line 907, all.css.sass */
+  .csstransitions.borderradius #welcome .salutation:hover .me {
+    left: 710px; }
+
+  /* line 915, all.css.sass */
+  #work .item .info h2 {
+    font-size: 60px; }
+  /* line 918, all.css.sass */
+  #work .item .info .categories {
+    font-size: 20px;
+    letter-spacing: -2px; }
+  /* line 922, all.css.sass */
+  #work .item .info .links {
+    position: absolute;
+    top: 20px;
+    right: 0; }
+
+  /* line 929, all.css.sass */
+  #contact p {
+    font-size: 50px; }
+    /* line 933, all.css.sass */
+    #contact p.so:after {
+      bottom: -30px;
+      left: 0px; }
+    /* line 937, all.css.sass */
+    #contact p.just {
+      margin-left: 190px; }
+
+  /* line 941, all.css.sass */
+  footer {
+    font-size: 20px;
+    margin-bottom: 10px; } }

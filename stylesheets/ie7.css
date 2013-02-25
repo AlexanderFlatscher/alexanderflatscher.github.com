@@ -1,0 +1,16 @@
+/* line 5, ie7.css.sass */
+.welcome .welcome_message p .line3 .alex {
+  line-height: 100%;
+  margin-top: -5%;
+  padding-bottom: 0; }
+/* line 9, ie7.css.sass */
+.welcome .welcome_message p .line3 .and {
+  line-height: 100%;
+  margin-top: 1%; }
+/* line 12, ie7.css.sass */
+.welcome .welcome_message p .line3 .ima {
+  margin-top: -2%; }
+/* line 15, ie7.css.sass */
+.welcome .welcome_message p .line4 {
+  position: relative;
+  top: -7%; }
