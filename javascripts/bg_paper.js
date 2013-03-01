@@ -344,14 +344,17 @@
   })();
 
   $(function() {
-    var background, bgPaper, canvas, circles, stats, tool;
-    stats = new Stats();
-    stats.setMode(0);
-    stats.domElement.style.position = 'fixed';
-    stats.domElement.style.left = '0px';
-    stats.domElement.style.top = '0px';
-    stats.domElement.style.letterSpacing = '0px';
-    document.body.appendChild(stats.domElement);
+    /*
+      stats = new Stats()
+      stats.setMode(0)
+      stats.domElement.style.position = 'fixed'
+      stats.domElement.style.left = '0px'
+      stats.domElement.style.top = '0px'
+      stats.domElement.style.letterSpacing = '0px'
+      document.body.appendChild(stats.domElement)
+    */
+
+    var background, bgPaper, canvas, circles, tool;
     bgPaper = $('#bg_paper');
     bgPaper.attr({
       width: $(window).width(),
@@ -377,9 +380,7 @@
       return circles.push(lcm.createLissajousCircle("smallest", data.lissajousPaths[circles.length], 0.9, 3.8, 5000, 12));
     });
     paper.view.onFrame = function(e) {
-      stats.begin();
-      lcm.applyNextAnimationStep(e.delta);
-      return stats.end();
+      return lcm.applyNextAnimationStep(e.delta);
     };
     if (!$('html').hasClass('touch')) {
       tool = new paper.Tool();
