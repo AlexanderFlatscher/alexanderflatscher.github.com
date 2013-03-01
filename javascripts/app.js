@@ -33,7 +33,7 @@
         s = $("#" + id);
         if (s) {
           app.activeSlide = s;
-          app.applyBackgroundHue(s.attr('data-background-hue'));
+          app.applyBackgroundHue(parseFloat(s.attr('data-background-hue')));
           return $('#wrapper').trigger('sectionChange');
         } else {
           return false;
@@ -41,22 +41,22 @@
       },
       backgroundHue: parseFloat(firstSlide.attr('data-background-hue')),
       applyBackgroundHue: function(hue) {
-        app.backgroundHue = parseFloat(hue);
-        return app.colorAnimation.current = 0;
-      },
-      colorAnimation: {
-        current: 0,
-        end: 50,
-        isRunning: function() {
-          return app.colorAnimation.current < app.colorAnimation.end;
-        },
-        isFirstStep: function() {
-          return app.colorAnimation.current === 0;
-        },
-        isLastStep: function() {
-          return app.colorAnimation.current === (app.colorAnimation.end - 1);
-        }
+        app.backgroundHue = hue;
+        return $(window).trigger($.Event('backgroundHueChange', {
+          hue: hue
+        }));
       }
+      /*colorAnimation:
+        current: 0
+        end: 50
+        isRunning: () ->
+          return app.colorAnimation.current < app.colorAnimation.end
+        isFirstStep: () ->
+          return app.colorAnimation.current == 0
+        isLastStep: () ->
+          return app.colorAnimation.current == (app.colorAnimation.end - 1)
+      */
+
     };
   });
 

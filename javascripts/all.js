@@ -33,7 +33,7 @@
         s = $("#" + id);
         if (s) {
           app.activeSlide = s;
-          app.applyBackgroundHue(s.attr('data-background-hue'));
+          app.applyBackgroundHue(parseFloat(s.attr('data-background-hue')));
           return $('#wrapper').trigger('sectionChange');
         } else {
           return false;
@@ -41,22 +41,22 @@
       },
       backgroundHue: parseFloat(firstSlide.attr('data-background-hue')),
       applyBackgroundHue: function(hue) {
-        app.backgroundHue = parseFloat(hue);
-        return app.colorAnimation.current = 0;
-      },
-      colorAnimation: {
-        current: 0,
-        end: 50,
-        isRunning: function() {
-          return app.colorAnimation.current < app.colorAnimation.end;
-        },
-        isFirstStep: function() {
-          return app.colorAnimation.current === 0;
-        },
-        isLastStep: function() {
-          return app.colorAnimation.current === (app.colorAnimation.end - 1);
-        }
+        app.backgroundHue = hue;
+        return $(window).trigger($.Event('backgroundHueChange', {
+          hue: hue
+        }));
       }
+      /*colorAnimation:
+        current: 0
+        end: 50
+        isRunning: () ->
+          return app.colorAnimation.current < app.colorAnimation.end
+        isFirstStep: () ->
+          return app.colorAnimation.current == 0
+        isLastStep: () ->
+          return app.colorAnimation.current == (app.colorAnimation.end - 1)
+      */
+
     };
   });
 
@@ -64,10 +64,17 @@
 (function() {
 
   $(function() {
-    var adjustMargin, html, icon, links, nav;
+    var adjustMargin, html, icon, links, nav, toggleNav;
     nav = $('nav');
     icon = nav.children('.menu_icon').first();
     html = $('html');
+    toggleNav = function() {
+      if (html.hasClass('nav_open')) {
+        return html.removeClass('nav_open');
+      } else {
+        return html.addClass('nav_open');
+      }
+    };
     adjustMargin = function() {
       if ($(window).width() >= 600) {
         return nav.css({
@@ -81,11 +88,7 @@
     });
     if (html.hasClass('touch')) {
       icon.bind("click", function(e) {
-        if (html.hasClass('nav_open')) {
-          html.removeClass('nav_open');
-        } else {
-          html.addClass('nav_open');
-        }
+        toggleNav();
         return false;
       });
     } else {
@@ -99,6 +102,9 @@
     links = $('ul li a', nav);
     return links.click(function(e) {
       var hash;
+      if (html.hasClass('touch')) {
+        toggleNav();
+      }
       hash = $(e.target).attr('href');
       $.scrollTo(hash, 500, {
         onAfter: function() {
@@ -164,36 +170,201 @@
 
 }).call(this);
 (function() {
-  var LissajousCircle, ProgressBar;
+  var CircleSymbol, LissajousCircle, LissajousCircleManager,
+    __hasProp = {}.hasOwnProperty,
+    __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
 
   if (!Modernizr.canvas) {
     return;
   }
 
+  LissajousCircleManager = (function() {
+
+    function LissajousCircleManager(canvas) {
+      this.canvas = canvas;
+      this.lissajousCircles = [];
+      this.circleSymbols = {
+        biggest: new CircleSymbol(this.canvas, 0.4, app.backgroundHue, 1, 0.5),
+        big: new CircleSymbol(this.canvas, 0.3, app.backgroundHue, 1, 0.82),
+        medium: new CircleSymbol(this.canvas, 0.2, app.backgroundHue, 1, 0.64),
+        small: new CircleSymbol(this.canvas, 0.1, app.backgroundHue, 0.37, 0.46),
+        smallest: new CircleSymbol(this.canvas, 0.05, app.backgroundHue, 0.56, 0.47)
+      };
+      window.test = this.circleSymbols;
+      this.colorAnimation = {
+        current: 0,
+        end: 5,
+        running: false
+      };
+    }
+
+    LissajousCircleManager.prototype.adjustToSize = function(horizontalFactor, verticalFactor) {
+      var cs, lc, size, _i, _len, _ref, _ref1, _results;
+      _ref = this.lissajousCircles;
+      for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+        lc = _ref[_i];
+        lc.adjustToSize(horizontalFactor, verticalFactor);
+      }
+      _ref1 = this.circleSymbols;
+      _results = [];
+      for (size in _ref1) {
+        cs = _ref1[size];
+        _results.push(cs.adjustToSize(horizontalFactor, verticalFactor));
+      }
+      return _results;
+    };
+
+    LissajousCircleManager.prototype.applyNextAnimationStep = function(delta) {
+      var cs, last, lc, size, _i, _len, _ref, _ref1;
+      _ref = this.lissajousCircles;
+      for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+        lc = _ref[_i];
+        lc.circle.position = lc.getNextLocation(delta);
+      }
+      if (this.colorAnimation.running) {
+        last = this.colorAnimation.current >= this.colorAnimation.end;
+        _ref1 = this.circleSymbols;
+        for (size in _ref1) {
+          cs = _ref1[size];
+          cs.applyColorAnimationStep(this.colorAnimation.current, this.colorAnimation.end, delta, last);
+        }
+        if (last) {
+          return this.colorAnimation.running = false;
+        } else {
+          return this.colorAnimation.current += delta;
+        }
+      }
+    };
+
+    LissajousCircleManager.prototype.createLissajousCircle = function(size, lissajousPathData, scrollFactor, relativeVerticalOffset, lissajousPathProgress, speed) {
+      return this.lissajousCircles.push(new LissajousCircle(this.circleSymbols[size], lissajousPathData, scrollFactor, relativeVerticalOffset, lissajousPathProgress, speed));
+    };
+
+    LissajousCircleManager.prototype.changeHue = function(hue) {
+      var cs, size, _ref, _results;
+      this.colorAnimation.running = true;
+      this.colorAnimation.current = 0;
+      _ref = this.circleSymbols;
+      _results = [];
+      for (size in _ref) {
+        cs = _ref[size];
+        _results.push(cs.prepareColorAnimation(hue));
+      }
+      return _results;
+    };
+
+    LissajousCircleManager.prototype.mouseRepulsion = function(point) {
+      var hitResult, lc, _i, _len, _ref, _results;
+      _ref = this.lissajousCircles;
+      _results = [];
+      for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+        lc = _ref[_i];
+        if (!lc.listenToMouseRepulsion()) {
+          continue;
+        }
+        hitResult = lc.circle.hitTest(point, {
+          tolerance: 50,
+          fill: true,
+          stroke: true
+        });
+        if (hitResult && hitResult.item) {
+          _results.push(lc.setMouseRepulsion(point));
+        } else {
+          _results.push(void 0);
+        }
+      }
+      return _results;
+    };
+
+    LissajousCircleManager.prototype.setScrollOffset = function(top) {
+      var lc, _i, _len, _ref, _results;
+      _ref = this.lissajousCircles;
+      _results = [];
+      for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+        lc = _ref[_i];
+        _results.push(lc.setScrollOffset(top));
+      }
+      return _results;
+    };
+
+    return LissajousCircleManager;
+
+  })();
+
+  CircleSymbol = (function(_super) {
+
+    __extends(CircleSymbol, _super);
+
+    function CircleSymbol(canvas, size, hue, saturation, lightness) {
+      var center, circlePath, color1, color2, radius;
+      this.canvas = canvas;
+      this.colorAnimation = {
+        startColor: new paper.HslColor(hue, saturation, lightness),
+        currentColor: new paper.HslColor(hue, saturation, lightness),
+        desiredColor: new paper.HslColor(hue, saturation, lightness)
+      };
+      radius = size * (this.canvas.width > this.canvas.height ? this.canvas.width : this.canvas.height);
+      center = new paper.Point(0, 0);
+      circlePath = new paper.Path.Circle(center, radius);
+      color1 = new paper.HslColor(hue, saturation, lightness, 0.5);
+      color2 = new paper.HslColor(hue, saturation, lightness, 0.005);
+      circlePath.fillColor = new paper.GradientColor(new paper.Gradient([color1, color2]), center.add([radius, -radius]), center.add([-radius, radius]));
+      CircleSymbol.__super__.constructor.call(this, circlePath);
+    }
+
+    CircleSymbol.prototype.adjustToSize = function(horizontalFactor, verticalFactor) {
+      var f;
+      f = this.canvas.width > this.canvas.height ? horizontalFactor : verticalFactor;
+      return this.definition.scale(f);
+    };
+
+    CircleSymbol.prototype.applyColorAnimationStep = function(current, end, delta, last) {
+      var next, s, _i, _len, _ref, _results;
+      next = (current + delta) / end;
+      this.colorAnimation.redStep = (this.colorAnimation.desiredColor.red - this.colorAnimation.currentColor.red) * next;
+      this.colorAnimation.greenStep = (this.colorAnimation.desiredColor.green - this.colorAnimation.currentColor.green) * next;
+      this.colorAnimation.blueStep = (this.colorAnimation.desiredColor.blue - this.colorAnimation.currentColor.blue) * next;
+      _ref = this.definition.fillColor.gradient.stops;
+      _results = [];
+      for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+        s = _ref[_i];
+        if (last) {
+          this.colorAnimation.currentColor.red = s.color.red = this.colorAnimation.desiredColor.red;
+          this.colorAnimation.currentColor.green = s.color.green = this.colorAnimation.desiredColor.green;
+          _results.push(this.colorAnimation.currentColor.blue = s.color.blue = this.colorAnimation.desiredColor.blue);
+        } else {
+          this.colorAnimation.currentColor.red = s.color.red += this.colorAnimation.redStep;
+          this.colorAnimation.currentColor.green = s.color.green += this.colorAnimation.greenStep;
+          _results.push(this.colorAnimation.currentColor.blue = s.color.blue += this.colorAnimation.blueStep);
+        }
+      }
+      return _results;
+    };
+
+    CircleSymbol.prototype.prepareColorAnimation = function(hue) {
+      return this.colorAnimation.desiredColor.hue = hue;
+    };
+
+    return CircleSymbol;
+
+  })(paper.Symbol);
+
   LissajousCircle = (function() {
 
-    function LissajousCircle(canvas, lissajousPathData, size, hue, saturation, lightness, scrollFactor, relativeVerticalOffset, lissajousPathProgress, speed) {
-      var center, color1, color2, s, _i, _len, _ref;
-      this.canvas = canvas;
+    function LissajousCircle(symbol, lissajousPathData, scrollFactor, relativeVerticalOffset, lissajousPathProgress, speed) {
+      var s, _i, _len, _ref;
       this.scrollFactor = scrollFactor != null ? scrollFactor : 0;
-      if (relativeVerticalOffset == null) {
-        relativeVerticalOffset = 0;
-      }
+      this.relativeVerticalOffset = relativeVerticalOffset != null ? relativeVerticalOffset : 0;
       this.lissajousPathProgress = lissajousPathProgress != null ? lissajousPathProgress : 0;
       this.speed = speed != null ? speed : 10;
       this.state = "lissajous";
-      this.verticalOffset = relativeVerticalOffset * ($('body').height() / 4);
+      this.verticalOffset = this.relativeVerticalOffset * ($('body').height() / 4) * this.scrollFactor;
       this.mouseRepulsionTimer = 0;
       this.mouseRepulsionPathProgress = 0;
       this.returnPathProgress = 0;
       this.returnSpeed = 0;
       this.returnSpeedProgress = 0;
       this.scrollOffset = 0;
-      this.colorAnimation = {
-        initialColor: new paper.HslColor(hue, saturation, lightness),
-        currentColor: new paper.HslColor(hue, saturation, lightness),
-        desiredColor: new paper.HslColor(hue, saturation, lightness)
-      };
       this.lissajousPath = new paper.Path();
       this.lissajousPath.strokeColor = "black";
       this.lissajousPath.visible = false;
@@ -205,27 +376,19 @@
       }
       this.lissajousPath.closed = true;
       this.lissajousPath.scale($('body').width() / 1000, $('body').height() / 4 / 1000, [0, 0]);
-      center = new paper.Point(0, this.verticalOffset);
-      this.radius = size * (this.canvas.width > this.canvas.height ? this.canvas.width : this.canvas.height);
-      this.circle = new paper.Path.Circle(center, this.radius);
-      color1 = new paper.HslColor(hue, saturation, lightness, 0.5);
-      color2 = new paper.HslColor(hue, saturation, lightness, 0.005);
-      this.circle.fillColor = new paper.GradientColor(new paper.Gradient([color1, color2]), center.add([this.radius, -this.radius]), center.add([-this.radius, this.radius]));
-      this.circle.position = this.lissajousPath.getPointAt(this.lissajousPathProgress);
+      this.circle = symbol.place(this.lissajousPath.getPointAt(this.lissajousPathProgress));
       this.setScrollOffset($(window).scrollTop());
     }
 
-    LissajousCircle.prototype.exportLissajousPath = function() {
-      return JSON.stringify(this.lissajousPath, ['segments', 'handleIn', 'handleOut', 'point', 'x', 'y']);
-    };
-
     LissajousCircle.prototype.adjustToSize = function(horizontalFactor, verticalFactor) {
-      var f, s, _i, _len, _ref;
+      var oldVerticalOffset, s, _i, _len, _ref;
+      oldVerticalOffset = this.verticalOffset;
+      this.verticalOffset = this.relativeVerticalOffset * ($('body').height() / 4) * this.scrollFactor;
       _ref = this.lissajousPath.segments;
       for (_i = 0, _len = _ref.length; _i < _len; _i++) {
         s = _ref[_i];
         s.point.x *= horizontalFactor;
-        s.point.y *= verticalFactor;
+        s.point.y = (s.point.y - oldVerticalOffset) * verticalFactor + this.verticalOffset;
         if (s.handleIn != null) {
           s.handleIn.x *= horizontalFactor;
           s.handleIn.y *= verticalFactor;
@@ -235,9 +398,13 @@
           s.handleOut.y *= verticalFactor;
         }
       }
-      f = this.canvas.width > this.canvas.height ? horizontalFactor : verticalFactor;
-      this.circle.scale(f);
-      return this.radius *= f;
+      if (this.state === "return") {
+        return this.calculateReturnPath();
+      }
+    };
+
+    LissajousCircle.prototype.exportLissajousPath = function() {
+      return JSON.stringify(this.lissajousPath, ['segments', 'handleIn', 'handleOut', 'point', 'x', 'y']);
     };
 
     LissajousCircle.prototype.raiseLissajousPathProgress = function(amount) {
@@ -318,17 +485,6 @@
       }
     };
 
-    LissajousCircle.prototype.setHue = function(hue) {
-      var s, _i, _len, _ref, _results;
-      _ref = this.circle.fillColor.gradient.stops;
-      _results = [];
-      for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-        s = _ref[_i];
-        _results.push(s.color.hue = hue);
-      }
-      return _results;
-    };
-
     LissajousCircle.prototype.setMouseRepulsion = function(point) {
       var cPosition, vector, vectorLength;
       if (this.mouseRepulsionPath != null) {
@@ -336,136 +492,37 @@
       }
       point = point.subtract([0, this.scrollOffset]);
       cPosition = this.circle.position.subtract([0, this.scrollOffset]);
-      vectorLength = 100 - (point.getDistance(cPosition) - this.radius);
+      vectorLength = 100 - (point.getDistance(cPosition) - this.circle.bounds.width / 2);
       vector = ((cPosition.subtract(point)).normalize(vectorLength)).add(cPosition);
       this.mouseRepulsionPath = new paper.Path.Line(cPosition, vector);
+      this.mouseRepulsionPath.strokeColor = "red";
+      this.mouseRepulsionPath.visible = false;
       this.mouseRepulsionPathProgress = 0;
       this.mouseRepulsionTimer = 0;
-      this.state = "mouseRepulsion";
-      this.mouseRepulsionPath.strokeColor = "red";
-      return this.mouseRepulsionPath.visible = false;
+      return this.state = "mouseRepulsion";
     };
 
     LissajousCircle.prototype.setScrollOffset = function(scrollTop) {
-      return this.scrollOffset = this.verticalOffset - scrollTop * this.scrollFactor;
+      return this.scrollOffset = -scrollTop * this.scrollFactor;
     };
 
     LissajousCircle.prototype.listenToMouseRepulsion = function() {
       return this.mouseRepulsionTimer === 0 || this.mouseRepulsionTimer > 15;
     };
 
-    LissajousCircle.prototype.prepareColorAnimationTo = function(hue) {
-      this.colorAnimation.desiredColor.hue = hue;
-      this.colorAnimation.redStep = (this.colorAnimation.desiredColor.red - this.colorAnimation.currentColor.red) / (app.colorAnimation.end - app.colorAnimation.current);
-      this.colorAnimation.greenStep = (this.colorAnimation.desiredColor.green - this.colorAnimation.currentColor.green) / (app.colorAnimation.end - app.colorAnimation.current);
-      return this.colorAnimation.blueStep = (this.colorAnimation.desiredColor.blue - this.colorAnimation.currentColor.blue) / (app.colorAnimation.end - app.colorAnimation.current);
-    };
-
-    LissajousCircle.prototype.applyColorAnimationStep = function(last) {
-      var s, _i, _len, _ref, _results;
-      if (last == null) {
-        last = false;
-      }
-      if (!this.colorAnimation.currentColor.equals(this.colorAnimation.desiredColor)) {
-        _ref = this.circle.fillColor.gradient.stops;
-        _results = [];
-        for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-          s = _ref[_i];
-          if (last) {
-            this.colorAnimation.currentColor.red = s.color.red = this.colorAnimation.desiredColor.red;
-            this.colorAnimation.currentColor.green = s.color.green = this.colorAnimation.desiredColor.green;
-            _results.push(this.colorAnimation.currentColor.blue = s.color.blue = this.colorAnimation.desiredColor.blue);
-          } else {
-            this.colorAnimation.currentColor.red = s.color.red += this.colorAnimation.redStep;
-            this.colorAnimation.currentColor.green = s.color.green += this.colorAnimation.greenStep;
-            _results.push(this.colorAnimation.currentColor.blue = s.color.blue += this.colorAnimation.blueStep);
-          }
-        }
-        return _results;
-      }
-    };
-
     return LissajousCircle;
 
   })();
 
-  ProgressBar = (function() {
-
-    function ProgressBar(canvas, height) {
-      var progressBarPoint, progressBarSize;
-      this.progress = 0;
-      this.currentWidth = 0;
-      this.fullWidth = canvas.width;
-      this.fullHeight = canvas.height;
-      this.expandProgress = 0;
-      this.expandEnd = 50;
-      progressBarPoint = new paper.Point(0, canvas.height / 2 - height / 2);
-      progressBarSize = new paper.Size(0, height);
-      this.rectangle = new paper.Path.Rectangle(progressBarPoint, progressBarSize);
-      this.rectangle.fillColor = "#00AAFF";
-      this.rectangle.fillColor.alpha = 0.5;
-    }
-
-    ProgressBar.prototype.setProgress = function(p) {
-      this.progress = p;
-      return this.setRectangleWidth(this.fullWidth * p / 100);
-    };
-
-    ProgressBar.prototype.setRectangleWidth = function(width) {
-      return this.rectangle.segments[2].point.x = this.rectangle.segments[3].point.x = width;
-    };
-
-    ProgressBar.prototype.adjustToSize = function(hor, ver) {
-      var currentWidth;
-      currentWidth = this.rectangle.segments[2].point.x;
-      this.setRectangleWidth(currentWidth * hor);
-      this.fullWidth *= hor;
-      this.fullHeight *= ver;
-      return this.rectangle.position.y *= ver;
-    };
-
-    ProgressBar.prototype.isFinished = function() {
-      return this.progress === 100;
-    };
-
-    ProgressBar.prototype.expandVertically = function() {
-      var stepSize;
-      if (!this.isFullyExpanded()) {
-        stepSize = (this.fullHeight - 20) / 2 / this.expandEnd;
-        this.rectangle.segments[0].point.y += stepSize;
-        this.rectangle.segments[3].point.y += stepSize;
-        this.rectangle.segments[1].point.y -= stepSize;
-        this.rectangle.segments[2].point.y -= stepSize;
-        this.rectangle.opacity -= 1 / this.expandEnd;
-        return this.expandProgress++;
-      } else {
-        return console.error("already fully expanded");
-      }
-    };
-
-    ProgressBar.prototype.isFullyExpanded = function() {
-      return this.expandProgress === this.expandEnd;
-    };
-
-    ProgressBar.prototype.destroy = function() {
-      return this.rectangle.remove();
-    };
-
-    return ProgressBar;
-
-  })();
-
   $(function() {
-    /*stats = new Stats()
-    stats.setMode(0)
-    stats.domElement.style.position = 'fixed'
-    stats.domElement.style.left = '0px'
-    stats.domElement.style.top = '0px'
-    stats.domElement.style.letterSpacing = '0px'
-    document.body.appendChild(stats.domElement)
-    */
-
-    var background, bgPaper, canvas, circles, onFrameAnimationState, onFrameInstructions, tool;
+    var background, bgPaper, canvas, circles, stats, tool;
+    stats = new Stats();
+    stats.setMode(0);
+    stats.domElement.style.position = 'fixed';
+    stats.domElement.style.left = '0px';
+    stats.domElement.style.top = '0px';
+    stats.domElement.style.letterSpacing = '0px';
+    document.body.appendChild(stats.domElement);
     bgPaper = $('#bg_paper');
     bgPaper.attr({
       width: $(window).width(),
@@ -473,92 +530,39 @@
     });
     canvas = bgPaper[0];
     paper.setup(canvas);
+    window.lcm = new LissajousCircleManager(canvas);
     background = new paper.Path.Rectangle(paper.view.bounds);
     background.fillColor = new paper.GradientColor(new paper.Gradient(['#fff', '#f8f8f8']), new paper.Point(paper.view.bounds.width / 2, 0), [paper.view.bounds.width / 2, paper.view.bounds.height]);
-    window.progressBar = new ProgressBar(canvas, 20);
     paper.view.draw();
     circles = [];
     $.getJSON('/javascripts/lissajous_paths.json', function(data) {
-      circles.push(new LissajousCircle(canvas, data.lissajousPaths[circles.length], 0.4, app.backgroundHue, 1, 0.5, 0.2, 0.2, 4000, 5));
-      circles.push(new LissajousCircle(canvas, data.lissajousPaths[circles.length], 0.4, app.backgroundHue, 1, 0.5, 0.2, 0.4, 2000, 5));
-      circles.push(new LissajousCircle(canvas, data.lissajousPaths[circles.length], 0.3, app.backgroundHue, 1, 0.82, 0.4, 0.2, 4500, 8));
-      circles.push(new LissajousCircle(canvas, data.lissajousPaths[circles.length], 0.3, app.backgroundHue, 1, 0.82, 0.4, 0.9, 3500, 8));
-      circles.push(new LissajousCircle(canvas, data.lissajousPaths[circles.length], 0.2, app.backgroundHue, 1, 0.64, 0.5, 0, 500));
-      circles.push(new LissajousCircle(canvas, data.lissajousPaths[circles.length], 0.2, app.backgroundHue, 1, 0.64, 0.5, 0.9, 2000));
-      circles.push(new LissajousCircle(canvas, data.lissajousPaths[circles.length], 0.1, app.backgroundHue, 0.37, 0.46, 0.6, 0.4, 4500));
-      circles.push(new LissajousCircle(canvas, data.lissajousPaths[circles.length], 0.1, app.backgroundHue, 0.37, 0.46, 0.6, 1.3));
-      circles.push(new LissajousCircle(canvas, data.lissajousPaths[circles.length], 0.05, app.backgroundHue, 0.56, 0.47, 0.9, 0.2, 0, 12));
-      return circles.push(new LissajousCircle(canvas, data.lissajousPaths[circles.length], 0.05, app.backgroundHue, 0.56, 0.47, 0.9, 1.5, 5000, 12));
+      circles.push(lcm.createLissajousCircle("biggest", data.lissajousPaths[circles.length], 0.2, 1, 1000, 5));
+      circles.push(lcm.createLissajousCircle("biggest", data.lissajousPaths[circles.length], 0.2, 4, 4500, 5));
+      circles.push(lcm.createLissajousCircle("big", data.lissajousPaths[circles.length], 0.4, 0.5, 4500, 8));
+      circles.push(lcm.createLissajousCircle("big", data.lissajousPaths[circles.length], 0.4, 3, 3500, 8));
+      circles.push(lcm.createLissajousCircle("medium", data.lissajousPaths[circles.length], 0.5, 0.5, 500));
+      circles.push(lcm.createLissajousCircle("medium", data.lissajousPaths[circles.length], 0.5, 3.3, 2000));
+      circles.push(lcm.createLissajousCircle("small", data.lissajousPaths[circles.length], 0.6, 0.4, 4500));
+      circles.push(lcm.createLissajousCircle("small", data.lissajousPaths[circles.length], 0.6, 2.8));
+      circles.push(lcm.createLissajousCircle("smallest", data.lissajousPaths[circles.length], 0.9, 0.2, 0, 12));
+      return circles.push(lcm.createLissajousCircle("smallest", data.lissajousPaths[circles.length], 0.9, 3.8, 5000, 12));
     });
-    onFrameAnimationState = "circles";
-    onFrameInstructions = {
-      circles: function(delta) {
-        var c, _i, _len;
-        for (_i = 0, _len = circles.length; _i < _len; _i++) {
-          c = circles[_i];
-          c.circle.position = c.getNextLocation(delta);
-          if (app.colorAnimation.isRunning()) {
-            if (app.colorAnimation.isFirstStep()) {
-              c.prepareColorAnimationTo(app.backgroundHue);
-            }
-            c.applyColorAnimationStep(app.colorAnimation.isLastStep());
-          }
-        }
-        if (app.colorAnimation.isRunning()) {
-          return app.colorAnimation.current++;
-        }
-      },
-      progressBar: function() {
-        circlesInstructions[circles.length]();
-        progressBar.setProgress(circles.length * 100);
-        if (progressBar.isFinished()) {
-          return onFrameAnimationState = "removeProgressBar";
-        }
-      },
-      removeProgressBar: function() {
-        var c, _i, _len;
-        this.circles();
-        progressBar.expandVertically();
-        for (_i = 0, _len = circles.length; _i < _len; _i++) {
-          c = circles[_i];
-          c.circle.opacity = 1 - progressBar.rectangle.opacity;
-        }
-        if (progressBar.isFullyExpanded()) {
-          onFrameAnimationState = "circles";
-          progressBar.destroy();
-          return delete progressBar;
-        }
-      }
-    };
     paper.view.onFrame = function(e) {
-      return onFrameInstructions[onFrameAnimationState](e.delta);
+      stats.begin();
+      lcm.applyNextAnimationStep(e.delta);
+      return stats.end();
     };
     if (!$('html').hasClass('touch')) {
       tool = new paper.Tool();
       tool.onMouseMove = function(e) {
-        var c, hitResult, _i, _len, _results;
-        _results = [];
-        for (_i = 0, _len = circles.length; _i < _len; _i++) {
-          c = circles[_i];
-          if (!c.listenToMouseRepulsion()) {
-            continue;
-          }
-          hitResult = c.circle.hitTest(e.point, {
-            tolerance: 50,
-            fill: true,
-            stroke: true
-          });
-          if (hitResult && hitResult.item) {
-            _results.push(c.setMouseRepulsion(e.point));
-          } else {
-            _results.push(void 0);
-          }
-        }
-        return _results;
+        return lcm.mouseRepulsion(e.point);
       };
     }
+    $(window).bind("backgroundHueChange", function(e) {
+      return lcm.changeHue(e.hue);
+    });
     $(window).resize(function(e) {
-      var c, h, horizontalFactor, newSize, oldSize, verticalFactor, w, _i, _len;
+      var h, horizontalFactor, newSize, oldSize, verticalFactor, w;
       w = $(window).width();
       h = $(window).height();
       oldSize = [paper.view.viewSize.width, paper.view.viewSize.height];
@@ -566,22 +570,10 @@
       horizontalFactor = newSize[0] / oldSize[0];
       verticalFactor = newSize[1] / oldSize[1];
       background.scale(horizontalFactor, verticalFactor, [0, 0]);
-      for (_i = 0, _len = circles.length; _i < _len; _i++) {
-        c = circles[_i];
-        c.adjustToSize(horizontalFactor, verticalFactor);
-      }
-      if (typeof progressBar !== "undefined" && progressBar !== null) {
-        return progressBar.adjustToSize(horizontalFactor, verticalFactor);
-      }
+      return lcm.adjustToSize(horizontalFactor, verticalFactor);
     });
     return $(window).scroll(function(e) {
-      var c, _i, _len, _results;
-      _results = [];
-      for (_i = 0, _len = circles.length; _i < _len; _i++) {
-        c = circles[_i];
-        _results.push(c.setScrollOffset($(window).scrollTop()));
-      }
-      return _results;
+      return lcm.setScrollOffset($(window).scrollTop());
     });
   });
 

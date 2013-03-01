@@ -1,10 +1,17 @@
 (function() {
 
   $(function() {
-    var adjustMargin, html, icon, links, nav;
+    var adjustMargin, html, icon, links, nav, toggleNav;
     nav = $('nav');
     icon = nav.children('.menu_icon').first();
     html = $('html');
+    toggleNav = function() {
+      if (html.hasClass('nav_open')) {
+        return html.removeClass('nav_open');
+      } else {
+        return html.addClass('nav_open');
+      }
+    };
     adjustMargin = function() {
       if ($(window).width() >= 600) {
         return nav.css({
@@ -18,11 +25,7 @@
     });
     if (html.hasClass('touch')) {
       icon.bind("click", function(e) {
-        if (html.hasClass('nav_open')) {
-          html.removeClass('nav_open');
-        } else {
-          html.addClass('nav_open');
-        }
+        toggleNav();
         return false;
       });
     } else {
@@ -36,6 +39,9 @@
     links = $('ul li a', nav);
     return links.click(function(e) {
       var hash;
+      if (html.hasClass('touch')) {
+        toggleNav();
+      }
       hash = $(e.target).attr('href');
       $.scrollTo(hash, 500, {
         onAfter: function() {
