@@ -15,6 +15,9 @@
         });
       }
     }
+  }, {
+    test: Modernizr.mq('only all'),
+    nope: "javascripts/respond.min.js"
   });
 
   /*,
@@ -24,8 +27,9 @@
 
 
   $(function() {
-    var firstSlide;
-    firstSlide = $('.slide').first();
+    var firstSlide, slides;
+    slides = $('.slide');
+    firstSlide = slides.first();
     return window.app = {
       activeSlide: firstSlide,
       activateSlideWithId: function(id) {
@@ -34,29 +38,18 @@
         if (s) {
           app.activeSlide = s;
           app.applyBackgroundHue(parseFloat(s.attr('data-background-hue')));
-          return $('#wrapper').trigger('sectionChange');
+          return $(window).trigger($.Event('sectionChange', {
+            hue: app.backgroundHue,
+            index: slides.index(s)
+          }));
         } else {
           return false;
         }
       },
       backgroundHue: parseFloat(firstSlide.attr('data-background-hue')),
       applyBackgroundHue: function(hue) {
-        app.backgroundHue = hue;
-        return $(window).trigger($.Event('backgroundHueChange', {
-          hue: hue
-        }));
+        return app.backgroundHue = hue;
       }
-      /*colorAnimation:
-        current: 0
-        end: 50
-        isRunning: () ->
-          return app.colorAnimation.current < app.colorAnimation.end
-        isFirstStep: () ->
-          return app.colorAnimation.current == 0
-        isLastStep: () ->
-          return app.colorAnimation.current == (app.colorAnimation.end - 1)
-      */
-
     };
   });
 

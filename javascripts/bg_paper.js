@@ -9,8 +9,9 @@
 
   LissajousCircleManager = (function() {
 
-    function LissajousCircleManager(canvas) {
+    function LissajousCircleManager(canvas, scrollTop) {
       this.canvas = canvas;
+      this.scrollTop = scrollTop != null ? scrollTop : 0;
       this.lissajousCircles = [];
       this.circleSymbols = {
         biggest: new CircleSymbol(this.canvas, 0.4, app.backgroundHue, 1, 0.5),
@@ -107,6 +108,7 @@
 
     LissajousCircleManager.prototype.setScrollOffset = function(top) {
       var lc, _i, _len, _ref, _results;
+      this.scrollTop = top;
       _ref = this.lissajousCircles;
       _results = [];
       for (_i = 0, _len = _ref.length; _i < _len; _i++) {
@@ -354,17 +356,16 @@
       document.body.appendChild(stats.domElement)
     */
 
-    var background, bgPaper, canvas, circles, tool;
+    var $window, bgPaper, canvas, circles, tool;
+    $window = $(window);
     bgPaper = $('#bg_paper');
     bgPaper.attr({
-      width: $(window).width(),
-      height: $(window).height()
+      width: $window.width(),
+      height: $window.height()
     });
     canvas = bgPaper[0];
     paper.setup(canvas);
-    window.lcm = new LissajousCircleManager(canvas);
-    background = new paper.Path.Rectangle(paper.view.bounds);
-    background.fillColor = new paper.GradientColor(new paper.Gradient(['#fff', '#f8f8f8']), new paper.Point(paper.view.bounds.width / 2, 0), [paper.view.bounds.width / 2, paper.view.bounds.height]);
+    window.lcm = new LissajousCircleManager(canvas, $window.scrollTop());
     paper.view.draw();
     circles = [];
     $.getJSON('/javascripts/lissajous_paths.json', function(data) {
@@ -380,30 +381,35 @@
       return circles.push(lcm.createLissajousCircle("smallest", data.lissajousPaths[circles.length], 0.9, 3.8, 5000, 12));
     });
     paper.view.onFrame = function(e) {
+      var scrollTop;
+      scrollTop = $window.scrollTop();
+      if (scrollTop !== lcm.scrollTop) {
+        lcm.setScrollOffset(scrollTop);
+      }
       return lcm.applyNextAnimationStep(e.delta);
     };
-    if (!$('html').hasClass('touch')) {
+    if (Modernizr.touch) {
+      document.addEventListener("touchmove", function(e) {
+        return console.log(e);
+      }, false);
+    } else {
       tool = new paper.Tool();
       tool.onMouseMove = function(e) {
         return lcm.mouseRepulsion(e.point);
       };
     }
-    $(window).bind("backgroundHueChange", function(e) {
+    $window.bind("sectionChange", function(e) {
       return lcm.changeHue(e.hue);
     });
-    $(window).resize(function(e) {
+    return $window.resize(function(e) {
       var h, horizontalFactor, newSize, oldSize, verticalFactor, w;
-      w = $(window).width();
-      h = $(window).height();
+      w = $window.width();
+      h = $window.height();
       oldSize = [paper.view.viewSize.width, paper.view.viewSize.height];
       newSize = paper.view.viewSize = [w, h];
       horizontalFactor = newSize[0] / oldSize[0];
       verticalFactor = newSize[1] / oldSize[1];
-      background.scale(horizontalFactor, verticalFactor, [0, 0]);
       return lcm.adjustToSize(horizontalFactor, verticalFactor);
-    });
-    return $(window).scroll(function(e) {
-      return lcm.setScrollOffset($(window).scrollTop());
     });
   });
 
