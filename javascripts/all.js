@@ -173,9 +173,8 @@
 
   LissajousCircleManager = (function() {
 
-    function LissajousCircleManager(canvas, scrollTop) {
+    function LissajousCircleManager(canvas) {
       this.canvas = canvas;
-      this.scrollTop = scrollTop != null ? scrollTop : 0;
       this.lissajousCircles = [];
       this.circleSymbols = {
         biggest: new CircleSymbol(this.canvas, 0.4, app.backgroundHue, 1, 0.5),
@@ -272,7 +271,6 @@
 
     LissajousCircleManager.prototype.setScrollOffset = function(top) {
       var lc, _i, _len, _ref, _results;
-      this.scrollTop = top;
       _ref = this.lissajousCircles;
       _results = [];
       for (_i = 0, _len = _ref.length; _i < _len; _i++) {
@@ -520,7 +518,7 @@
       document.body.appendChild(stats.domElement)
     */
 
-    var $window, bgPaper, canvas, circles, tool;
+    var $window, bgPaper, canvas, circles, scrollTop, tool, windowHeight;
     $window = $(window);
     bgPaper = $('#bg_paper');
     bgPaper.attr({
@@ -544,11 +542,14 @@
       circles.push(lcm.createLissajousCircle("smallest", data.lissajousPaths[circles.length], 0.9, 0.2, 0, 12));
       return circles.push(lcm.createLissajousCircle("smallest", data.lissajousPaths[circles.length], 0.9, 3.8, 5000, 12));
     });
+    scrollTop = 0;
+    windowHeight = $window.height();
     paper.view.onFrame = function(e) {
-      var scrollTop;
-      scrollTop = $window.scrollTop();
-      if (scrollTop !== lcm.scrollTop) {
-        lcm.setScrollOffset(scrollTop);
+      var sT;
+      sT = $window.scrollTop();
+      if (sT !== scrollTop) {
+        lcm.setScrollOffset(sT);
+        scrollTop = sT;
       }
       return lcm.applyNextAnimationStep(e.delta);
     };
@@ -565,7 +566,7 @@
     $window.bind("sectionChange", function(e) {
       return lcm.changeHue(e.hue);
     });
-    return $window.resize(function(e) {
+    return $window.resize(function() {
       var h, horizontalFactor, newSize, oldSize, verticalFactor, w;
       w = $window.width();
       h = $window.height();

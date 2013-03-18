@@ -1,4 +1,4 @@
-@import url(http://fonts.googleapis.com/css?family=Lobster+Two:400|Quicksand:300,400);
+@import url(http://fonts.googleapis.com/css?family=Lobster+Two:400,700|Quicksand:300,400);
 @font-face {
   font-family: "icomoon";
   src: url("/fonts/icomoon.eot");
@@ -14,7 +14,7 @@
 body {
   font-size: 16px;
   font-family: Quicksand, sans-serif;
-  font-weight: 300;
+  font-weight: 400;
   line-height: 1;
   letter-spacing: -0.095em; }
   /* line 44, all.css.sass */
@@ -122,7 +122,7 @@ nav {
   /* line 147, all.css.sass */
   nav ul {
     margin: 0;
-    padding: 60px 0 0; }
+    padding: 18px 0 0; }
     /* line 151, all.css.sass */
     nav ul li {
       margin-bottom: 20px; }
@@ -366,9 +366,10 @@ nav {
       #welcome .salutation p.hey {
         font-family: "Lobster Two", "Times New Roman", Times, serif;
         font-size: 80px;
+        font-weight: 400;
         letter-spacing: normal;
         position: relative; }
-        /* line 343, all.css.sass */
+        /* line 344, all.css.sass */
         #welcome .salutation p.hey:after {
           content: "";
           position: absolute;
@@ -376,7 +377,7 @@ nav {
           left: 10px;
           right: 10px;
           border-bottom: 2px dashed #171717; }
-      /* line 351, all.css.sass */
+      /* line 352, all.css.sass */
       #welcome .salutation p.my {
         font-size: 40px;
         font-weight: 300;
@@ -392,10 +393,10 @@ nav {
         /* line 40, all.css.sass */
         .textshadow #welcome .salutation p.my {
           text-shadow: -1px -1px 0px white; }
-        /* line 355, all.css.sass */
+        /* line 356, all.css.sass */
         #welcome .salutation p.my .and_break {
           display: none; }
-        /* line 358, all.css.sass */
+        /* line 359, all.css.sass */
         #welcome .salutation p.my:after {
           content: "";
           position: absolute;
@@ -403,23 +404,25 @@ nav {
           left: 10px;
           right: 10px;
           border-bottom: 2px dashed #171717; }
-      /* line 366, all.css.sass */
+      /* line 367, all.css.sass */
       #welcome .salutation p.wanna, #welcome .salutation p.or {
         letter-spacing: -0.09em;
         display: inline; }
-      /* line 370, all.css.sass */
+      /* line 371, all.css.sass */
       #welcome .salutation p.wanna {
         font-size: 30px;
+        font-weight: 300;
         margin-bottom: 0px; }
-      /* line 374, all.css.sass */
+      /* line 377, all.css.sass */
       #welcome .salutation p.or {
-        font-size: 20px; }
+        font-size: 20px;
+        font-weight: 300; }
 
-/* line 378, all.css.sass */
+/* line 383, all.css.sass */
 #about h1 {
   float: right;
   margin-right: 10px; }
-/* line 382, all.css.sass */
+/* line 387, all.css.sass */
 #about p {
   clear: right;
   overflow: hidden;
@@ -431,7 +434,7 @@ nav {
   /* line 53, all.css.sass */
   .no-js #about p {
     text-align: left; }
-  /* line 388, all.css.sass */
+  /* line 393, all.css.sass */
   #about p:first-letter {
     font-size: 50px;
     font-weight: 300;
@@ -451,94 +454,89 @@ nav {
     .textshadow #about p:first-letter {
       text-shadow: -1px -1px 0px white; }
 
-/* line 397, all.css.sass */
+/* line 402, all.css.sass */
 #work .item {
   margin: 40px 0;
   position: relative; }
-  /* line 401, all.css.sass */
+  /* line 406, all.css.sass */
   #work .item:before {
     content: "";
     position: absolute;
     border-bottom: 2px dashed #171717;
     width: 100%;
     top: 290px; }
-  /* line 408, all.css.sass */
+  /* line 413, all.css.sass */
   #work .item .image {
     text-align: center;
     width: 300px;
     height: 300px;
     position: relative;
     margin: 0 auto; }
-    /* line 415, all.css.sass */
+    /* line 420, all.css.sass */
     .borderradius #work .item .image {
       border-radius: 50%;
       overflow: hidden;
       -webkit-mask-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAA5JREFUeNpiYGBgAAgwAAAEAAGbA+oJAAAAAElFTkSuQmCC); }
-    /* line 420, all.css.sass */
-    #work .item .image:after {
-      content: "";
-      position: absolute;
-      top: 170px;
-      bottom: 0;
-      left: 0;
-      right: 0; }
-      /* line 428, all.css.sass */
-      .rgba #work .item .image:after {
-        background: rgba(255, 255, 255, 0.8); }
-      /* line 430, all.css.sass */
-      .no-rgba #work .item .image:after, .no-js #work .item .image:after {
-        background: white; }
-    /* line 433, all.css.sass */
+    /* line 425, all.css.sass */
     #work .item .image img {
       width: 300px;
       height: 300px; }
-  /* line 437, all.css.sass */
+  /* line 429, all.css.sass */
   #work .item .info {
-    margin-top: -125px;
-    position: relative;
+    margin-top: 0;
     overflow: hidden;
     *zoom: 1; }
-    /* line 442, all.css.sass */
+    /* line 433, all.css.sass */
     #work .item .info h2 {
       font-size: 40px;
       font-family: "Lobster Two";
+      font-weight: 700;
       text-align: center;
       margin: 0 0 10px; }
-    /* line 449, all.css.sass */
+    /* line 441, all.css.sass */
     #work .item .info .categories {
       text-align: center;
-      width: 190px;
+      width: 280px;
       margin: 0 auto;
       font-weight: 400; }
-    /* line 455, all.css.sass */
+    /* line 448, all.css.sass */
     #work .item .info .description {
-      margin-top: 30px; }
+      margin-top: 30px;
+      position: relative; }
       /* line 50, all.css.sass */
       .js #work .item .info .description {
         text-align: justify; }
       /* line 53, all.css.sass */
       .no-js #work .item .info .description {
         text-align: left; }
-    /* line 459, all.css.sass */
+      /* line 453, all.css.sass */
+      #work .item .info .description:before {
+        content: "";
+        border-bottom: 2px dashed #171717;
+        position: absolute;
+        top: -15px;
+        width: 100%;
+        left: 0; }
+    /* line 461, all.css.sass */
     #work .item .info .code, #work .item .info .link {
       float: right;
       width: 80px;
       height: 80px;
       border-radius: 50%;
       overflow: hidden; }
-      /* line 466, all.css.sass */
+      /* line 468, all.css.sass */
       .rgba #work .item .info .code, .rgba #work .item .info .link {
         background: rgba(229, 199, 0, 0.3); }
-      /* line 469, all.css.sass */
+      /* line 471, all.css.sass */
       .no-rgba #work .item .info .code, .no-js #work .item .info .code, .no-rgba #work .item .info .link, .no-js #work .item .info .link {
         background: #f3d199; }
-      /* line 472, all.css.sass */
+      /* line 474, all.css.sass */
       .csstransitions #work .item .info .code, .csstransitions #work .item .info .link {
         -webkit-transition: 150ms background;
         -moz-transition: 150ms background;
         -o-transition: 150ms background;
         transition: 150ms background; }
-      /* line 474, all.css.sass */
+      /* line 476, all.css.sass */
       #work .item .info .code a, #work .item .info .link a {
         width: 200px;
         height: 100%;
@@ -565,50 +563,50 @@ nav {
         /* line 46, all.css.sass */
         .no-rgba #work .item .info .code a, no-js #work .item .info .code a, .no-rgba #work .item .info .link a, no-js #work .item .info .link a {
           color: #171717; }
-        /* line 484, all.css.sass */
+        /* line 486, all.css.sass */
         .csstransitions #work .item .info .code a, .csstransitions #work .item .info .link a {
           -webkit-transition: 150ms left cubic-bezier(0.25, 0.46, 0.45, 0.94);
           -moz-transition: 150ms left cubic-bezier(0.25, 0.46, 0.45, 0.94);
           -o-transition: 150ms left cubic-bezier(0.25, 0.46, 0.45, 0.94);
           transition: 150ms left cubic-bezier(0.25, 0.46, 0.45, 0.94); }
-        /* line 487, all.css.sass */
+        /* line 489, all.css.sass */
         #work .item .info .code a .text, #work .item .info .link a .text {
           position: absolute;
           left: 15px;
           top: 30px; }
-        /* line 492, all.css.sass */
+        /* line 494, all.css.sass */
         #work .item .info .code a .arrow, #work .item .info .link a .arrow {
           position: absolute;
           top: 16px;
           left: 150px;
           font-size: 50px; }
-      /* line 501, all.css.sass */
+      /* line 503, all.css.sass */
       .rgba #work .item .info .code:hover, .rgba #work .item .info .code:focus, .rgba #work .item .info .link:hover, .rgba #work .item .info .link:focus {
         background: rgba(229, 199, 0, 0.7); }
-      /* line 504, all.css.sass */
+      /* line 506, all.css.sass */
       .no-rgba #work .item .info .code:hover, .no-js #work .item .info .code:hover, .no-rgba #work .item .info .code:focus, .no-js #work .item .info .code:focus, .no-rgba #work .item .info .link:hover, .no-js #work .item .info .link:hover, .no-rgba #work .item .info .link:focus, .no-js #work .item .info .link:focus {
         background: #ffc423; }
-      /* line 507, all.css.sass */
+      /* line 509, all.css.sass */
       #work .item .info .code:hover a, #work .item .info .code:focus a, #work .item .info .link:hover a, #work .item .info .link:focus a {
         left: -120px; }
-    /* line 511, all.css.sass */
+    /* line 513, all.css.sass */
     #work .item .info .link.not_alone {
       margin-left: -15px; }
-    /* line 515, all.css.sass */
+    /* line 517, all.css.sass */
     #work .item .info .link a .text {
       left: 20px; }
 
-/* line 520, all.css.sass */
+/* line 522, all.css.sass */
 #contact p {
   font-size: 25px;
   margin: 30px 0; }
-  /* line 524, all.css.sass */
+  /* line 526, all.css.sass */
   #contact p br {
     display: none; }
-  /* line 527, all.css.sass */
+  /* line 529, all.css.sass */
   #contact p.so {
     position: relative; }
-    /* line 530, all.css.sass */
+    /* line 532, all.css.sass */
     #contact p.so:after {
       content: "";
       position: absolute;
@@ -616,21 +614,21 @@ nav {
       width: 100%;
       bottom: -17px;
       left: 0px; }
-  /* line 538, all.css.sass */
+  /* line 540, all.css.sass */
   #contact p.just {
     text-align: right; }
-    /* line 541, all.css.sass */
+    /* line 543, all.css.sass */
     #contact p.just a {
       font-family: "Lobster Two", "Times New Roman", Times, serif;
       text-decoration: none; }
-      /* line 546, all.css.sass */
+      /* line 548, all.css.sass */
       .rgba #contact p.just a {
         color: rgba(23, 23, 23, 0.8); }
-      /* line 549, all.css.sass */
+      /* line 551, all.css.sass */
       .no-rgba #contact p.just a, .no-js #contact p.just a {
         color: #171717; }
 
-/* line 552, all.css.sass */
+/* line 554, all.css.sass */
 footer {
   text-align: center;
   position: relative;
@@ -638,26 +636,26 @@ footer {
   margin-bottom: 5px; }
 
 @media (min-width: 480px) {
-  /* line 563, all.css.sass */
+  /* line 565, all.css.sass */
   #welcome .salutation p.my .and_break {
     display: inherit; } }
 @media (min-width: 600px) {
-  /* line 569, all.css.sass */
+  /* line 571, all.css.sass */
   body {
     font-size: 20px; }
-    /* line 572, all.css.sass */
+    /* line 574, all.css.sass */
     .no-canvas body, .no-js body {
       background: url(/images/no_canvas_bg_991.png) center top repeat-y; }
 
-  /* line 575, all.css.sass */
+  /* line 577, all.css.sass */
   h1 {
     margin-top: 20px; }
 
-  /* line 579, all.css.sass */
+  /* line 581, all.css.sass */
   #wrapper .slide {
     padding-top: 50px;
     padding-bottom: 50px; }
-  /* line 583, all.css.sass */
+  /* line 585, all.css.sass */
   .csstransitions.csstransforms #wrapper {
     -webkit-transition-property: none;
     -moz-transition-property: none;
@@ -667,18 +665,18 @@ footer {
     -moz-transition-duration: 200ms;
     -o-transition-duration: 200ms;
     transition-duration: 200ms; }
-  /* line 587, all.css.sass */
+  /* line 589, all.css.sass */
   .nav_open.csstransforms #wrapper {
     -webkit-transform: none;
     -moz-transform: none;
     -ms-transform: none;
     -o-transform: none;
     transform: none; }
-  /* line 589, all.css.sass */
+  /* line 591, all.css.sass */
   .nav_open.no-csstransforms #wrapper, no-js #wrapper {
     left: inherit; }
 
-  /* line 593, all.css.sass */
+  /* line 595, all.css.sass */
   .csstransitions.csstransforms .bg {
     -webkit-transition-property: none;
     -moz-transition-property: none;
@@ -688,18 +686,18 @@ footer {
     -moz-transition-duration: 200ms;
     -o-transition-duration: 200ms;
     transition-duration: 200ms; }
-  /* line 597, all.css.sass */
+  /* line 599, all.css.sass */
   .nav_open.csstransforms .bg {
     -webkit-transform: none;
     -moz-transform: none;
     -ms-transform: none;
     -o-transform: none;
     transform: none; }
-  /* line 599, all.css.sass */
+  /* line 601, all.css.sass */
   .nav_open.no-csstransforms .bg, no-js .bg {
     left: inherit; }
 
-  /* line 602, all.css.sass */
+  /* line 604, all.css.sass */
   nav {
     width: 80px;
     height: 80px;
@@ -714,15 +712,15 @@ footer {
     /* line 59, all.css.sass */
     .no-rgba nav, .no-js nav {
       background: white; }
-    /* line 612, all.css.sass */
+    /* line 614, all.css.sass */
     .boxshadow nav {
       -webkit-box-shadow: none;
       -moz-box-shadow: none;
       box-shadow: none; }
-    /* line 615, all.css.sass */
+    /* line 617, all.css.sass */
     .borderradius nav {
       border-radius: 50%; }
-    /* line 618, all.css.sass */
+    /* line 620, all.css.sass */
     .csstransitions.csstransforms nav {
       -webkit-transition-property: none;
       -moz-transition-property: none;
@@ -732,23 +730,23 @@ footer {
       -moz-transition-duration: 0;
       -o-transition-duration: 0;
       transition-duration: 0; }
-    /* line 622, all.css.sass */
+    /* line 624, all.css.sass */
     .nav_open.csstransforms nav {
       -webkit-transform: none;
       -moz-transform: none;
       -ms-transform: none;
       -o-transform: none;
       transform: none; }
-    /* line 624, all.css.sass */
+    /* line 626, all.css.sass */
     .nav_open.no-csstransforms nav, no-js nav {
       right: inherit; }
-    /* line 627, all.css.sass */
+    /* line 629, all.css.sass */
     .csstransitions.csstransforms nav, .csstransitions.no-csstransforms nav {
       -webkit-transition: 300ms width, 300ms height, 300ms top, 300ms right, 300ms background;
       -moz-transition: 300ms width, 300ms height, 300ms top, 300ms right, 300ms background;
       -o-transition: 300ms width, 300ms height, 300ms top, 300ms right, 300ms background;
       transition: 300ms width, 300ms height, 300ms top, 300ms right, 300ms background; }
-    /* line 630, all.css.sass */
+    /* line 632, all.css.sass */
     nav .menu_icon {
       width: 80px;
       height: 80px;
@@ -766,23 +764,23 @@ footer {
       /* line 46, all.css.sass */
       .no-rgba nav .menu_icon, no-js nav .menu_icon {
         color: #171717; }
-      /* line 643, all.css.sass */
+      /* line 645, all.css.sass */
       .rgba nav .menu_icon, .no-rgba nav .menu_icon, .no-js nav .menu_icon {
         background: none; }
-      /* line 646, all.css.sass */
+      /* line 648, all.css.sass */
       .csstransitions nav .menu_icon {
         -webkit-transition: 300ms top, 300ms right;
         -moz-transition: 300ms top, 300ms right;
         -o-transition: 300ms top, 300ms right;
         transition: 300ms top, 300ms right; }
-      /* line 649, all.css.sass */
+      /* line 651, all.css.sass */
       nav .menu_icon .icon {
         padding-top: 15px;
         padding-left: 19px; }
-      /* line 653, all.css.sass */
+      /* line 655, all.css.sass */
       nav .menu_icon .close {
         padding-right: 25px; }
-    /* line 657, all.css.sass */
+    /* line 659, all.css.sass */
     nav ul {
       overflow: hidden;
       *zoom: 1;
@@ -793,16 +791,16 @@ footer {
       border-right: 2px dashed #171717;
       padding: 40px 17px 0 0;
       margin: 0; }
-      /* line 667, all.css.sass */
+      /* line 669, all.css.sass */
       .csstransitions nav ul {
         -webkit-transition: 300ms top, 300ms right;
         -moz-transition: 300ms top, 300ms right;
         -o-transition: 300ms top, 300ms right;
         transition: 300ms top, 300ms right; }
-      /* line 670, all.css.sass */
+      /* line 672, all.css.sass */
       nav ul li {
         margin-bottom: 15px; }
-        /* line 673, all.css.sass */
+        /* line 675, all.css.sass */
         nav ul li a {
           white-space: nowrap;
           display: inline-block;
@@ -813,44 +811,44 @@ footer {
           /* line 46, all.css.sass */
           .no-rgba nav ul li a, no-js nav ul li a {
             color: #171717; }
-          /* line 679, all.css.sass */
+          /* line 681, all.css.sass */
           nav ul li a.welcome, nav ul li a.about, nav ul li a.work, nav ul li a.contact {
             background: none; }
-          /* line 682, all.css.sass */
+          /* line 684, all.css.sass */
           .boxshadow nav ul li a {
             -webkit-box-shadow: none;
             -moz-box-shadow: none;
             box-shadow: none; }
-          /* line 685, all.css.sass */
+          /* line 687, all.css.sass */
           nav ul li a:hover, nav ul li a:focus {
             padding-left: 3px; }
-          /* line 688, all.css.sass */
+          /* line 690, all.css.sass */
           .textshadow nav ul li a {
             text-shadow: -1px -1px 1px rgba(255, 255, 255, 0.8); }
-    /* line 691, all.css.sass */
+    /* line 693, all.css.sass */
     .nav_open nav, .no-js nav {
       width: 500px;
       height: 500px;
       top: -190px;
       right: -190px; }
-      /* line 697, all.css.sass */
+      /* line 699, all.css.sass */
       .nav_open nav .menu_icon, .no-js nav .menu_icon {
         top: 200px;
         right: 200px; }
-      /* line 701, all.css.sass */
+      /* line 703, all.css.sass */
       .nav_open nav ul, .no-js nav ul {
         top: 180px;
         right: 280px; }
-    /* line 705, all.css.sass */
+    /* line 707, all.css.sass */
     .nav_open.rgba nav {
       background: rgba(255, 255, 255, 0.8); }
 
-  /* line 710, all.css.sass */
+  /* line 712, all.css.sass */
   #welcome .salutation {
     text-align: left;
     padding-top: 100px;
     position: relative; }
-    /* line 715, all.css.sass */
+    /* line 717, all.css.sass */
     #welcome .salutation:after {
       content: "";
       position: absolute;
@@ -859,86 +857,86 @@ footer {
       width: 100%;
       z-index: 0;
       border-bottom: 2px dashed #171717; }
-    /* line 724, all.css.sass */
+    /* line 726, all.css.sass */
     #welcome .salutation p {
       font-weight: 300;
       position: relative;
       z-index: 2; }
-      /* line 729, all.css.sass */
+      /* line 731, all.css.sass */
       #welcome .salutation p.hey {
         font-size: 100px; }
-        /* line 732, all.css.sass */
+        /* line 734, all.css.sass */
         #welcome .salutation p.hey:after {
           display: none; }
-      /* line 735, all.css.sass */
+      /* line 737, all.css.sass */
       #welcome .salutation p.my {
         font-size: 50px;
         margin-bottom: 10px; }
-        /* line 739, all.css.sass */
+        /* line 741, all.css.sass */
         #welcome .salutation p.my:after {
           display: none; }
-      /* line 742, all.css.sass */
+      /* line 744, all.css.sass */
       #welcome .salutation p.wanna, #welcome .salutation p.or {
         display: block; }
-    /* line 745, all.css.sass */
+    /* line 747, all.css.sass */
     #welcome .salutation .me {
       position: absolute;
       z-index: 1;
       top: 10px;
       right: 10px; }
-      /* line 751, all.css.sass */
+      /* line 753, all.css.sass */
       .borderradius #welcome .salutation .me {
         width: 300px;
         height: 300px;
         border-radius: 50%;
         background: url(/images/me.jpg) no-repeat center center; }
-        /* line 757, all.css.sass */
+        /* line 759, all.css.sass */
         .borderradius #welcome .salutation .me img {
           display: none; }
-    /* line 761, all.css.sass */
+    /* line 763, all.css.sass */
     .csstransitions.borderradius #welcome .salutation .me {
       -webkit-transition: top 300ms, right 300ms, width 300ms, height 300ms;
       -moz-transition: top 300ms, right 300ms, width 300ms, height 300ms;
       -o-transition: top 300ms, right 300ms, width 300ms, height 300ms;
       transition: top 300ms, right 300ms, width 300ms, height 300ms; }
-    /* line 764, all.css.sass */
+    /* line 766, all.css.sass */
     .csstransitions.borderradius #welcome .salutation:hover .me {
       top: -90px;
       right: -90px;
       width: 500px;
       height: 500px; }
 
-  /* line 771, all.css.sass */
+  /* line 773, all.css.sass */
   #about p:first-letter {
     font-size: 65px; }
 
-  /* line 775, all.css.sass */
+  /* line 777, all.css.sass */
   #work .item {
     min-height: 300px; }
-    /* line 778, all.css.sass */
+    /* line 780, all.css.sass */
     #work .item:before {
       display: none; }
-    /* line 781, all.css.sass */
+    /* line 783, all.css.sass */
     #work .item .image {
       margin: 0;
       position: absolute;
       z-index: 2;
       top: 0;
       left: 0; }
-      /* line 788, all.css.sass */
+      /* line 790, all.css.sass */
       #work .item .image:after {
         display: none; }
-    /* line 791, all.css.sass */
+    /* line 793, all.css.sass */
     #work .item .info {
       margin-top: 0; }
-      /* line 794, all.css.sass */
+      /* line 796, all.css.sass */
       #work .item .info h2, #work .item .info p {
         padding-left: 310px; }
-      /* line 797, all.css.sass */
+      /* line 799, all.css.sass */
       #work .item .info h2 {
         text-align: left;
         font-size: 50px; }
-      /* line 801, all.css.sass */
+      /* line 803, all.css.sass */
       #work .item .info .categories {
         width: auto;
         margin: 0;
@@ -946,7 +944,7 @@ footer {
         font-weight: 300;
         font-size: 16px;
         position: relative; }
-        /* line 810, all.css.sass */
+        /* line 812, all.css.sass */
         #work .item .info .categories:after {
           content: "";
           position: absolute;
@@ -955,67 +953,70 @@ footer {
           left: 0;
           width: 100%;
           border-bottom: 2px dashed #171717; }
-      /* line 819, all.css.sass */
+      /* line 821, all.css.sass */
       #work .item .info .description {
         margin-bottom: 10px; }
 
-  /* line 823, all.css.sass */
+  /* line 825, all.css.sass */
   #contact p {
     font-size: 30px; } }
 @media (min-width: 768px) {
-  /* line 827, all.css.sass */
+  /* line 829, all.css.sass */
   body {
     font-size: 24px; }
 
-  /* line 831, all.css.sass */
+  /* line 833, all.css.sass */
   #wrapper .slide {
     padding-left: 20px;
     padding-right: 20px; }
 
-  /* line 838, all.css.sass */
+  /* line 840, all.css.sass */
   #welcome .salutation:after {
     top: 224px; }
-  /* line 841, all.css.sass */
+  /* line 843, all.css.sass */
   #welcome .salutation .me {
     right: 50px; }
-  /* line 845, all.css.sass */
+  /* line 847, all.css.sass */
   #welcome .salutation p.hey {
     font-size: 120px; }
-  /* line 848, all.css.sass */
+  /* line 850, all.css.sass */
   #welcome .salutation p.my {
     font-size: 70px; }
-  /* line 851, all.css.sass */
+  /* line 853, all.css.sass */
   #welcome .salutation p.wanna {
     font-size: 35px; }
-  /* line 854, all.css.sass */
+  /* line 856, all.css.sass */
   #welcome .salutation p.or {
     font-size: 24px; }
-  /* line 858, all.css.sass */
+  /* line 860, all.css.sass */
   .csstransitions.borderradius #welcome .salutation:hover .me {
     right: -50px; }
 
-  /* line 864, all.css.sass */
+  /* line 866, all.css.sass */
   #work .item .info h2 {
     margin-top: 20px; }
+  /* line 869, all.css.sass */
+  #work .item .info .categories {
+    letter-spacing: -1px; }
 
-  /* line 868, all.css.sass */
+  /* line 873, all.css.sass */
   #contact p {
     font-size: 35px; }
-    /* line 871, all.css.sass */
+    /* line 876, all.css.sass */
     #contact p.so {
       padding-right: 8%; }
-    /* line 874, all.css.sass */
+    /* line 879, all.css.sass */
     #contact p.just {
       padding-left: 8%; } }
 @media (min-width: 992px) {
-  /* line 878, all.css.sass */
+  /* line 883, all.css.sass */
   body {
     font-size: 30px; }
-    /* line 881, all.css.sass */
+    /* line 886, all.css.sass */
     .no-canvas body, .no-js body {
       background: url(/images/no_canvas_bg_1600.png) center top repeat-y; }
 
-  /* line 884, all.css.sass */
+  /* line 889, all.css.sass */
   h1 {
     font-size: 100px;
     margin: 150px 0 50px 0; }
@@ -1045,56 +1046,56 @@ footer {
     width: 200px;
     height: 200px;
     background-image: url(/images/bg_no_canvas_smallest_1600.png); }
-  /* line 898, all.css.sass */
+  /* line 903, all.css.sass */
   #bg_no_canvas .layer #bg_circle_container0 {
     left: -10%;
     top: 800px; }
-  /* line 902, all.css.sass */
+  /* line 907, all.css.sass */
   #bg_no_canvas .layer #bg_circle_container1 {
     right: 50%;
     top: 100px; }
-  /* line 906, all.css.sass */
+  /* line 911, all.css.sass */
   #bg_no_canvas .layer #bg_circle_container2 {
     left: 10%;
     top: 250px; }
-  /* line 910, all.css.sass */
+  /* line 915, all.css.sass */
   #bg_no_canvas .layer #bg_circle_container3 {
     right: 40%;
     top: 1300px; }
-  /* line 914, all.css.sass */
+  /* line 919, all.css.sass */
   #bg_no_canvas .layer #bg_circle_container4 {
     left: 5%;
     top: 500px; }
-  /* line 918, all.css.sass */
+  /* line 923, all.css.sass */
   #bg_no_canvas .layer #bg_circle_container5 {
     left: 50%;
     top: 1500px; }
-  /* line 922, all.css.sass */
+  /* line 927, all.css.sass */
   #bg_no_canvas .layer #bg_circle_container6 {
     right: 80%;
     top: 2500px; }
-  /* line 926, all.css.sass */
+  /* line 931, all.css.sass */
   #bg_no_canvas .layer #bg_circle_container7 {
     left: 10%;
     top: 1200px; }
-  /* line 930, all.css.sass */
+  /* line 935, all.css.sass */
   #bg_no_canvas .layer #bg_circle_container8 {
     left: 50%;
     top: 1300px; }
-  /* line 934, all.css.sass */
+  /* line 939, all.css.sass */
   #bg_no_canvas .layer #bg_circle_container9 {
     left: 30%;
     top: 100px; }
 
-  /* line 940, all.css.sass */
+  /* line 945, all.css.sass */
   #wrapper .slide {
     padding-left: 30px;
     padding-right: 30px; }
 
-  /* line 947, all.css.sass */
+  /* line 952, all.css.sass */
   #welcome .salutation:before, #welcome .salutation:after {
     top: 240px; }
-  /* line 950, all.css.sass */
+  /* line 955, all.css.sass */
   #welcome .salutation:before {
     content: "";
     position: absolute;
@@ -1102,140 +1103,140 @@ footer {
     z-index: 0;
     width: 150px;
     left: 10px; }
-  /* line 958, all.css.sass */
+  /* line 963, all.css.sass */
   #welcome .salutation:after {
     width: 693px;
     left: 211px; }
-  /* line 963, all.css.sass */
+  /* line 968, all.css.sass */
   #welcome .salutation p.hey {
     font-size: 140px; }
-  /* line 966, all.css.sass */
+  /* line 971, all.css.sass */
   #welcome .salutation p.my {
     font-size: 90px; }
-  /* line 969, all.css.sass */
+  /* line 974, all.css.sass */
   #welcome .salutation p.wanna {
     font-size: 48px; }
-  /* line 972, all.css.sass */
+  /* line 977, all.css.sass */
   #welcome .salutation p.or {
     font-size: 28px;
     margin-left: 222px; }
-  /* line 976, all.css.sass */
+  /* line 981, all.css.sass */
   #welcome .salutation .me {
     right: auto;
     left: 665px; }
-  /* line 981, all.css.sass */
+  /* line 986, all.css.sass */
   .csstransitions.borderradius #welcome .salutation .me {
     -webkit-transition: top 300ms, left 300ms, width 300ms, height 300ms;
     -moz-transition: top 300ms, left 300ms, width 300ms, height 300ms;
     -o-transition: top 300ms, left 300ms, width 300ms, height 300ms;
     transition: top 300ms, left 300ms, width 300ms, height 300ms; }
-  /* line 984, all.css.sass */
+  /* line 989, all.css.sass */
   .csstransitions.borderradius #welcome .salutation:hover .me {
     right: auto;
     left: 565px; }
 
-  /* line 988, all.css.sass */
+  /* line 993, all.css.sass */
   #about {
     overflow: hidden;
     *zoom: 1; }
-    /* line 991, all.css.sass */
+    /* line 996, all.css.sass */
     #about p {
       max-width: 1024px;
       float: right;
       margin-top: 0;
       overflow: visible; }
 
-  /* line 997, all.css.sass */
+  /* line 1002, all.css.sass */
   #work .item .info .categories {
     font-size: 18px; }
 
-  /* line 1000, all.css.sass */
+  /* line 1005, all.css.sass */
   #contact {
     overflow: hidden;
     *zoom: 1; }
-    /* line 1003, all.css.sass */
+    /* line 1008, all.css.sass */
     #contact p {
       font-size: 42px;
       margin: 50px 0; }
-      /* line 1007, all.css.sass */
+      /* line 1012, all.css.sass */
       #contact p br {
         display: inherit; }
-      /* line 1010, all.css.sass */
+      /* line 1015, all.css.sass */
       #contact p.so {
         padding-right: 0; }
-        /* line 1013, all.css.sass */
+        /* line 1018, all.css.sass */
         #contact p.so:after {
           bottom: -30px; }
-      /* line 1016, all.css.sass */
+      /* line 1021, all.css.sass */
       #contact p.just {
         padding-left: 0; }
 
-  /* line 1019, all.css.sass */
+  /* line 1024, all.css.sass */
   footer {
     font-size: 18px;
     margin-bottom: 7px; } }
 @media (min-width: 1382px) {
-  /* line 1027, all.css.sass */
+  /* line 1032, all.css.sass */
   #wrapper {
     width: 1382px;
     margin: 0 auto; }
-    /* line 1031, all.css.sass */
+    /* line 1036, all.css.sass */
     #wrapper .slide {
       padding-left: 40px;
       padding-left: 40px; }
 
-  /* line 1038, all.css.sass */
+  /* line 1043, all.css.sass */
   #welcome .salutation p {
     margin: 0; }
-    /* line 1041, all.css.sass */
+    /* line 1046, all.css.sass */
     #welcome .salutation p.hey {
       margin-bottom: 20px; }
-    /* line 1044, all.css.sass */
+    /* line 1049, all.css.sass */
     #welcome .salutation p.my {
       font-size: 100px; }
-    /* line 1047, all.css.sass */
+    /* line 1052, all.css.sass */
     #welcome .salutation p.wanna, #welcome .salutation p.or {
       letter-spacing: -0.09em; }
-    /* line 1050, all.css.sass */
+    /* line 1055, all.css.sass */
     #welcome .salutation p.wanna {
       font-size: 50px; }
-    /* line 1053, all.css.sass */
+    /* line 1058, all.css.sass */
     #welcome .salutation p.or {
       margin-left: 210px;
       font-size: 30px;
       letter-spacing: -0.09em; }
-  /* line 1058, all.css.sass */
+  /* line 1063, all.css.sass */
   #welcome .salutation .me {
     left: 810px; }
-  /* line 1062, all.css.sass */
+  /* line 1067, all.css.sass */
   .csstransitions.borderradius #welcome .salutation:hover .me {
     left: 710px; }
 
-  /* line 1070, all.css.sass */
+  /* line 1075, all.css.sass */
   #work .item .info h2 {
     font-size: 60px; }
-  /* line 1073, all.css.sass */
+  /* line 1078, all.css.sass */
   #work .item .info .categories {
     font-size: 20px;
     letter-spacing: -2px; }
-  /* line 1077, all.css.sass */
+  /* line 1082, all.css.sass */
   #work .item .info .links {
     position: absolute;
     top: 20px;
     right: 0; }
 
-  /* line 1084, all.css.sass */
+  /* line 1089, all.css.sass */
   #contact p {
     font-size: 50px; }
-    /* line 1088, all.css.sass */
+    /* line 1093, all.css.sass */
     #contact p.so:after {
       bottom: -30px;
       left: 0px; }
-    /* line 1092, all.css.sass */
+    /* line 1097, all.css.sass */
     #contact p.just {
       margin-left: 190px; }
 
-  /* line 1096, all.css.sass */
+  /* line 1101, all.css.sass */
   footer {
     font-size: 20px;
     margin-bottom: 10px; } }
